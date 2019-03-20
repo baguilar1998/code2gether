@@ -1,6 +1,25 @@
+/**
+ * ----------------------
+ * CONSTANTS
+ * ---------------------
+ */
+// const config: SocketIoConfig = { url: 'http://localhost:4444', options: {} };
+
+
+/**
+ * ---------------------
+ * MODULE IMPORTS
+ * ---------------------
+ */
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+// import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
+/**
+ * ---------------------
+ * COMPONENTS IMPORTS
+ * ---------------------
+ */
 import { AppComponent } from './app.component';
 import { LandingComponent } from './landing/landing.component';
 import { SignupComponent } from './landing/signup/signup.component';
@@ -28,7 +47,8 @@ import { CompilerComponent } from './main/project-editor/compiler/compiler.compo
     CompilerComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    // SocketIoModule.forRoot(config)
   ],
   providers: [],
   bootstrap: [AppComponent]

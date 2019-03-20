@@ -5,6 +5,9 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const router = express.Router();
 const app = express();
+const mongoose = require('mongoose');
+const http = require('http').Server(express);
+const io = require('socket.io')(http);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
@@ -17,6 +20,30 @@ app.use((req, res, next) =>{
   next();
 });
 
+//Database setup
+/*const uri = 'LINK FOR THE DATABASE';
+mongoose.connect(uri, { useNewUrlParser:true}).then(()=>{
+  console.log('connected to the database');
+}).catch(()=>{
+  console.log('could not connect to the database');
+});*/
+
+
+/**
+ * Socket Set-up
+ */
+io.on("connection", (socket)=>{
+  console.log("Connection has been established on localhost:4444");
+
+  socket.on("disconnect", ()=>{
+    console.log("Connection has been aborted");
+  });
+
+});
+
+http.listen(4444, ()=>{
+  console.log("Servering on localhost:4444");
+});
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
