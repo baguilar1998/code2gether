@@ -6,6 +6,15 @@
     <div class="item-1-background"></div>
       <div class="item-1">
         <!--Contents to where the modals will be-->
+          <div class="welcome" *ngIf="componentState === 'home'">
+            <button (click)="changeState('signin')">Test Button</button>
+          </div>
+          <div class="signin" *ngIf="componentState === 'signin'">
+            <app-signin></app-signin>
+          </div>
+          <div class="signup" *ngIf="componentState === 'signup'">
+            <app-signup></app-signup>
+          </div>
       </div>
 
   </div>

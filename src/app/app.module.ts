@@ -36,9 +36,6 @@ import { CompilerComponent } from './main/project-editor/compiler/compiler.compo
 @NgModule({
   declarations: [
     AppComponent,
-    LandingComponent,
-    SignupComponent,
-    SigninComponent,
     ForgotPasswordComponent,
     MainComponent,
     NavbarComponent,

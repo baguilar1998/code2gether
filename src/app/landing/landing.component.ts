@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LandingComponent implements OnInit {
 
-  constructor() { }
+  componentState: string;
+  constructor() {
+    this.componentState = 'home';
+   }
 
   ngOnInit() {
   }
 
+  changeState(state: string): void {
+    this.componentState = state;
+  }
 }
