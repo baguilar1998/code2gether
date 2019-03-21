@@ -14,6 +14,7 @@ const config: SocketIoConfig = { url: 'http://localhost:4444', options: {} };
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+import { AppRoutingModule } from './app-routing.module';
 
 /**
  * ---------------------
@@ -48,6 +49,7 @@ import { CompilerComponent } from './main/project-editor/compiler/compiler.compo
   ],
   imports: [
     BrowserModule,
+    AppRoutingModule,
     SocketIoModule.forRoot(config)
   ],
   providers: [],
