@@ -1,0 +1,32 @@
+.container{
+  position:fixed;
+  width:100%;
+  height:100%;
+  top:0px;
+  left:0px;
+  z-index:1;
+}
+.landing-header{
+  width:100%;
+  height:55px;
+  border-bottom: 1px solid rgb(235, 235, 235);
+}
+/*.landing-body{
+  position: absolute;
+  width:100%;
+  height:100%;
+}*/
+.item-1{
+  z-index:3;
+  position: absolute;
+}
+.item-1-background{
+  z-index:1;
+  position: absolute;
+  height:800px;
+  width:100%;
+  background-image: url('../../assets/landing-image.jpg');
+  background-repeat: no-repeat;
+  background-size:1950px 800px;
+  opacity:.5;
+}
