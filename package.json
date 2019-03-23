@@ -28,6 +28,7 @@
     "mongoose": "^5.4.19",
     "morgan": "^1.9.1",
     "ngx-socket-io": "^2.1.1",
+    "nodemon": "^1.18.10",
     "rxjs": "6.3.3",
     "rxjs-compat": "^6.2.2",
     "serve-favicon": "^2.5.0",
