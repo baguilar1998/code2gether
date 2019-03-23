@@ -77,10 +77,12 @@ input[type=text], input[type=password] {
     height: 60%; /* Full height */
     /*overflow: auto; /* Enable scroll if needed */
     background-color: #FF4500; /* Fallback color */
-    background-color: #FF4500; /* Black w/ opacity */
+    background-color: black; /* Black w/ opacity */
+    border: 1px solid #FF4500;
     border-radius: 25px;
     padding-top: 35px;
     padding-bottom: 35px;
+    margin-top: 80px;
   }
   
   /* Modal Content/Box */
