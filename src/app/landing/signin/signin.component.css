@@ -20,7 +20,6 @@ a:hover{
 
 /* Full-width input fields */
 input[type=text], input[type=password] {
-    font-style: italic;
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -31,17 +30,18 @@ input[type=text], input[type=password] {
   
   /* Set a style for all buttons */
   button {
-    background-color: #FF4500;
+    background-color: black;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
     cursor: pointer;
     width: 100%;
     border-radius: 25px;
-    border: 0.5px solid #000;
+    border: 0.5px solid black;
   }
   
   button:hover {
+    background-color:#FF4500;
     opacity: 0.8;
   }
   
@@ -77,8 +77,8 @@ input[type=text], input[type=password] {
     height: 60%; /* Full height */
     /*overflow: auto; /* Enable scroll if needed */
     background-color: #FF4500; /* Fallback color */
-    background-color: black; /* Black w/ opacity */
-    border: 1px solid #FF4500;
+    background-color: #FF4500; /* Black w/ opacity */
+    border: 1px solid black;
     border-radius: 25px;
     padding-top: 35px;
     padding-bottom: 35px;
