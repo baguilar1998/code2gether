@@ -1,6 +1,5 @@
-<h2>Login</h2>
 
-  <div id="mainModalDiv" class="modal">
+<div id="mainModalDiv" class="modal">
     <form class="modal-content animate">
       <div class="container">
         <label for="uname"><b>Username</b></label>
@@ -10,15 +9,13 @@
         <input type="password" placeholder="Enter Password" name="psw" required>
           
         <button type="submit">Login</button>
-        <label>
-          <input type="checkbox" checked="checked" name="remember"> Remember me
-        </label>
+        <span id = "signUp">Need an account? &nbsp;<a href="#">Sign up</a></span>
       </div>
       
-      <div class="container" style="background-color:#f1f1f1">
+      <!---<div class="container" style="background-color:#f1f1f1">
         <button type="button" (click)="document.getElementById('mainModelDiv').style.display='none'" class="cancelbtn">Cancel</button>
         <span class="psw">Forgot <a href="#">password?</a></span>
-      </div>
+      </div> -->
     </form>
  </div>
 

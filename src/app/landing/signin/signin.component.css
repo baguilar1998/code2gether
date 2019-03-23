@@ -1,5 +1,13 @@
 body {font-family: Arial, Helvetica, sans-serif;}
 
+#signUp{
+    margin-top: 15px;
+    display: flex; /* or inline-flex */
+    align-items: center;
+    justify-content: center;
+}
+
+
 /* Full-width input fields */
 input[type=text], input[type=password] {
     width: 100%;
@@ -12,7 +20,7 @@ input[type=text], input[type=password] {
   
   /* Set a style for all buttons */
   button {
-    background-color: #4CAF50;
+    background-color: #FF4500;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
