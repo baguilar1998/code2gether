@@ -17,11 +17,11 @@
               </div>
               <div class="buttonHolder">
                   <button id="signinButton" (click)="changeState('signin')">Sign in</button>
+                  <button (click)="changeState('signup')">Sign up</button>
               </div>
 
             </div>
 
-            <button (click)="changeState('signup')">Sign up</button>
           </div>
           <div class="signin" *ngIf="componentState === 'signin'">
             <app-signin></app-signin>
