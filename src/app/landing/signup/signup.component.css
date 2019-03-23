@@ -1,0 +1,63 @@
+.modal-content{
+    width:100%;
+}
+.modal-header{
+    padding: 8px 100px;
+    background-color: #5cb85c;
+    color:white;
+}
+
+/* Modal Body */
+.modal-body{ padding: 8px 100px; }
+
+/* Modal Footer */
+.modal-footer {
+    padding: 8px 100px;
+    background-color: #5cb85c;
+    color:white;
+    
+}
+
+.modal-content{
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 90%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    animation-name: animatetop;
+    animation-duration: 0.3s;
+}
+
+@keyframes animatetop {
+    from{ top: -300px; opacity: 0}
+    to {top: 0; opcaity: 1}
+}
+
+
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.6s; /* Safari */
+    transition-duration: 0.6s;
+    cursor: pointer;
+  }
+
+.button1 {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #008CBA;
+  }
+  
+  .button1:hover {
+    background-color: #008CBA;
+    color: white;
+  }
