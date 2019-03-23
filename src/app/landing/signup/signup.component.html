@@ -1,28 +1,32 @@
-<!-- Modal Content-->
-  <div class="modal-content">
-    <div class="modal=header">
-      <span class="close">&times;</span>
-      <h2 style="text-align:center;">Sign Up</h2>
-    </div>
-  <div class="modal=body">
-    <style>
-      form{
-        text-align:center;
-      }
-    </style>
-    <form text-align = center>First name:
-      <input type="text" name="firstname"><br>
-      Last name: 
-      <input type = "text" name="lastname"><br>
-      Email:
-      <input type = "text" email="emailAddress"><br>
-      Username:
-      <input type="text" name="userName"><br>
-      Password:
-      <input type="password" name="password"><br>
+
+<div id="mainModalDiv" class="modal">
+    <form class="modal-content animate">
+      
+      <div class="imgcontainer">
+          <img src="../../../assets/img_avatar3.png" alt="Avatar" class="avatar">
+      </div>
+      
+      <div class="container">
+          <label for="fname"><b>First Name</b></label>
+          <input id = "inputClass" type="text" placeholder="Enter First Name" name="fname" required>
+  
+          <label for="lname"><b>Last Name</b></label>
+          <input id = "inputClass" type="text" placeholder="Enter Last Name" name="uname" required>
+  
+    
+          <label for="uname"><b>Username</b></label>
+          <input id = "inputClass" type="text" placeholder="Enter Username" name="uname" required>
+  
+            
+          <label for="email"><b>Email</b></label>
+          <input id = "inputClass" type="text" placeholder="Enter Email Address" name="uname" required>
+  
+          <label for="psw"><b>Password</b></label>
+          <input id = "inputClass" type="password" placeholder="Enter Password" name="psw" required>
+            
+          <button type="submit">Sign Up</button>
+      </div>
+      
     </form>
-    </div>
-  <div class="modal-footer">
-      <button class="button button1">Sign Up</button>
-    </div>
-  </div>
+ </div>
+
