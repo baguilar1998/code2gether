@@ -1,10 +1,21 @@
 <div class="container">
   <div class="landing-body">
     <div class="item-1-background"></div>
+    <div class="item-1-background-color"></div>
       <div class="item-1">
           <label class="title">code2gether</label>
         <!--Contents to where the modals will be-->
           <div class="welcome" *ngIf="componentState === 'home'">
+            <div class="welcome-header">
+              <div class="code-icon">
+                <img class="img-icon" src="../../assets/coding.png"/>
+              </div>
+              <div class="quote">
+                <h1 id="quote">A collaborative place for coders.</h1>
+              </div>
+
+            </div>
+
             <button (click)="changeState('signin')">Sign in</button>
             <button (click)="changeState('signup')">Sign up</button>
           </div>
