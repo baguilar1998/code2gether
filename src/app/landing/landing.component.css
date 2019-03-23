@@ -1,5 +1,7 @@
 .container{
   position:fixed;
+  overflow-y: scroll;
+  overflow-x:hidden;
   width:100%;
   height:100%;
   top:0px;
@@ -27,6 +29,13 @@
   width:100%;
   height:970px;
   position: absolute;
+}
+.item-2{
+  z-index:3;
+  width:100%;
+  height:950px;
+  margin-bottom:970px;
+  background-color:white;
 }
 .welcome{
   position: absolute;
@@ -109,9 +118,9 @@ Welcome Sign
   padding: 9px 10px;
   font-size: 17px;
   font-weight:bold;
-  cursor: pointer;
 }
 #signinButton:hover{
   background:#FF4500;
   border: 2px solid #FF4500;
+  cursor: pointer;
 }
