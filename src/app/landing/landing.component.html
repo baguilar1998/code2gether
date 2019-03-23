@@ -5,7 +5,8 @@
           <label class="title">code2gether</label>
         <!--Contents to where the modals will be-->
           <div class="welcome" *ngIf="componentState === 'home'">
-            <button (click)="changeState('signin')">Test Button</button>
+            <button (click)="changeState('signin')">Sign in</button>
+            <button (click)="changeState('signup')">Sign up</button>
           </div>
           <div class="signin" *ngIf="componentState === 'signin'">
             <app-signin></app-signin>
