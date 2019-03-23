@@ -68,9 +68,43 @@ Welcome Sign
 #quote{
   color:white;
   position:relative;
+  font-size:55px;
+  overflow: hidden;
+  border-right: .15em solid white; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .10em; /* Adjust as needed */
+  animation:
+    typing 2s steps(30, end),
+    blink-caret .75s step-end infinite;
+
+}
+@keyframes typing {
+  from { width: 0 }
+  to { width: 935px; }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: white; }
 }
 .img-icon {
   text-align: center;
-  width:150px;
-  height:150px;
+  width:170px;
+  height:170px;
+}
+#signinButton {
+  width:130px;
+  height:50px;
+  border: 2px solid #FF4500;
+  background-color: #FF4500;
+  color: white;
+  transition: .3s;
+  padding: 9px 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+#signinButton:hover{
+  background:white;
+  color:#FF4500;
 }
