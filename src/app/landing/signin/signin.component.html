@@ -1,22 +1,21 @@
-
 <div id="mainModalDiv" class="modal">
     <form class="modal-content animate">
-      
+        <span (click)="changeState('home')" class="close">&times;</span>
       <div class="imgcontainer">
           <img src="../../../assets/img_avatar3.png" alt="Avatar" class="avatar">
       </div>
-      
+
       <div class="container">
         <label for="uname"><b>Username</b></label>
         <input id = "inputClass" type="text" placeholder="Enter Username" name="uname" required>
 
         <label for="psw"><b>Password</b></label>
         <input id = "inputClass" type="password" placeholder="Enter Password" name="psw" required>
-          
+
         <button type="submit">Login</button>
-        <span id = "signUpSpan">Need an account? &nbsp;<a href="#">Sign up</a></span>
+        <span id ="signUpSpan">Need an account? &nbsp;<a href="javascript:void(0)" (click)="changeState('signup')">Sign up</a></span>
       </div>
-      
+
     </form>
  </div>
 

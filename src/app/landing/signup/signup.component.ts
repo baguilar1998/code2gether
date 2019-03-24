@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-signup',
@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignupComponent implements OnInit {
 
+  @Output() stateChange = new EventEmitter<string>();
+
   constructor() { }
 
   ngOnInit() {
   }
 
+  changeState(state: string): void {
+    this.stateChange.emit(state);
+  }
 }

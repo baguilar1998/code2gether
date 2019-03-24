@@ -94,21 +94,21 @@ span.psw {
   width: 80%; /* Could be more or less, depending on screen size */
 }
 
-/* The Close Button (x) */
-.close {
-  position: absolute;
-  right: 25px;
-  top: 0;
-  color: #000;
-  font-size: 35px;
-  font-weight: bold;
-}
+  /* The Close Button (x) */
+  .close {
+    position:relative;
+    float:right;
+    margin-right:20px;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+  }
 
-.close:hover,
-.close:focus {
-  color: red;
-  cursor: pointer;
-}
+  .close:hover,
+  .close:focus {
+    color: red;
+    cursor: pointer;
+  }
 
 /* Add Zoom Animation */
 .animate {
@@ -117,12 +117,12 @@ span.psw {
 }
 
 @-webkit-keyframes animatezoom {
-  from {-webkit-transform: scale(0)} 
+  from {-webkit-transform: scale(0)}
   to {-webkit-transform: scale(1)}
 }
-  
+
 @keyframes animatezoom {
-  from {transform: scale(0)} 
+  from {transform: scale(0)}
   to {transform: scale(1)}
 }
 
