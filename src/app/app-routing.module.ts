@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MainComponent } from './main/main.component';
+import { ProjectEditorComponent } from './main/project-editor/project-editor.component';
 const routes: Routes = [
   {
     path: '',
@@ -9,6 +10,10 @@ const routes: Routes = [
   {
     path: 'projects',
     component: MainComponent
+  },
+  {
+    path: 'project-editor',
+    component: ProjectEditorComponent
   }
 ];
 
