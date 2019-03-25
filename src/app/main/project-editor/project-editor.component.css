@@ -1,0 +1,40 @@
+/*#file-list-div{
+    float:left;
+    border:2px solid black;
+}
+#code-editor-div{
+    display:inline;
+    border:2px solid red;
+}
+#compiler-div{
+    float:right;
+    border:2px solid blue;
+}*/
+
+.file-list{
+    float:left;
+    border:2px solid black;
+    width:19%;
+}
+.code-editor{
+    display: inline-block;
+    margin:0 auto;
+    border:2px solid red;
+    width:40%;
+}
+.compiler{
+    float:right;
+    border:2px solid blue;
+    width:40%;
+}
+
+.body{
+    border:1px solid purple;
+    padding: 10px;
+}
+
+.container{
+    border:1px solid orange;
+    padding: 15px;
+    width:100%;
+}
