@@ -1,22 +1,14 @@
 const mongoose = require('mongoose');
 
-var Lobby = new mongoose.Schema({
-    accountID: {
+var  LobbySchema = new mongoose.Schema({
+    projectId: {
         type: Schema.Types.ObjectId,
-        ref: 'Account',
+        ref: 'Project',
     },
-
-    subFiles: {
-        type: Schema.Types.ObjectId,
-        ref: 'Subfiles',
-    },
-
-    language: {
-        type:String,
-        default:String,
-        required: true
-    },
-
+    programFiles: {
+        type: Array,
+        default: []
+    }
 });
 
-module.exports = mongoose.model('Lobby', UserSchema, 'lobies');
+module.exports = mongoose.model('Lobby', LobbySchema);

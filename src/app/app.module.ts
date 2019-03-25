@@ -22,16 +22,15 @@ import { AppRoutingModule } from './app-routing.module';
  * ---------------------
  */
 import { AppComponent } from './app.component';
-import { LandingComponent } from './landing/landing.component';
-import { SignupComponent } from './landing/signup/signup.component';
-import { SigninComponent } from './landing/signin/signin.component';
 import { ForgotPasswordComponent } from './landing/forgot-password/forgot-password.component';
 import { MainComponent } from './main/main.component';
 import { NavbarComponent } from './main/navbar/navbar.component';
 import { ProjectEditorComponent } from './main/project-editor/project-editor.component';
-import { FileListComponent } from './main/project-editor/file-list/file-list.component';
+import { FileListComponent } from './main/file-list/file-list.component';
 import { CodeEditorComponent } from './main/project-editor/code-editor/code-editor.component';
 import { CompilerComponent } from './main/project-editor/compiler/compiler.component';
+import { CreateNewProjectComponent } from './main/create-new-project/create-new-project.component';
+import { ProgramFilesComponent } from './main/project-editor/program-files/program-files.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +41,9 @@ import { CompilerComponent } from './main/project-editor/compiler/compiler.compo
     ProjectEditorComponent,
     FileListComponent,
     CodeEditorComponent,
-    CompilerComponent
+    CompilerComponent,
+    CreateNewProjectComponent,
+    ProgramFilesComponent
   ],
   imports: [
     BrowserModule,
