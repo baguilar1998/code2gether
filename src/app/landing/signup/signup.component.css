@@ -49,7 +49,7 @@ input[type=text], input[type=password] {
   /* Center the image and position the close button */
   .imgcontainer {
     text-align: center;
-    margin: 24px 0 12px 0;
+    margin: 24px 0 0px 0;
     position: relative;
   }
   
@@ -70,11 +70,13 @@ input[type=text], input[type=password] {
   
   /* The Modal (background) */
   .modal {
+    line-height: 1em;
     margin:0 auto;
     z-index: -1; /* Sit on top */
     left: 0;
     top: 0;
-    width: 60%; /* Full width */
+    min-width: 500px;
+    width: 40%; /* Full width */
     height: 40%; /* Full height */
     /*overflow: auto; /* Enable scroll if needed */
     background-color: #FF4500; /* Fallback color */
@@ -92,7 +94,7 @@ input[type=text], input[type=password] {
     margin: 0% auto 0% auto; /* 5% from the top, 15% from the bottom and centered */
     border: 1px solid #888;
     border-radius: 15px;
-    width: 80%; /* Could be more or less, depending on screen size */
+    width: 90%; /* Could be more or less, depending on screen size */
   }
   
   /* The Close Button (x) */
@@ -100,6 +102,7 @@ input[type=text], input[type=password] {
     position:relative;
     float:right;
     margin-right:20px;
+    margin-top: 10px;
     color: #000;
     font-size: 35px;
     font-weight: bold;
@@ -110,11 +113,21 @@ input[type=text], input[type=password] {
     color: red;
     cursor: pointer;
   }
-  
+
   /* Add Zoom Animation */
   .animate {
     -webkit-animation: animatezoom 0.6s;
-    animation: animatezoom 0.6s
+    animation: animatezoom 0.6s;
+  }
+
+  @keyframes movedown {
+    0%{transform: translateY(0px);}
+    100%{transform: translateY(-20px);}
+  }
+
+  @-webkit-keyframes movedown {
+    0% {-webkit-transform: translateY(0px)} 
+    100% {-webkit-transform: translateY(20px)}
   }
   
   @-webkit-keyframes animatezoom {
