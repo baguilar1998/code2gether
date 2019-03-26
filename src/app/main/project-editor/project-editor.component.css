@@ -31,11 +31,20 @@ li a.active {
 }
 
 #inputClass{
-    width:99%;
+    width:97%;
     height:90%;
     border:none;
     padding:10px;
 }
+
+.title {
+    font-size:25pt;
+    font-weight:bold;
+    color:black;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+  }
 
 #runButton{
     margin: 0 auto;
@@ -63,7 +72,7 @@ li a.active {
     height:700px;
     overflow: auto;
     background-color:white;
-    margin-right:2px;
+    margin-right:20px;
     border-radius:10px;
 }
 .code-editor{
@@ -71,7 +80,7 @@ li a.active {
     margin:0 auto;
     border:2px solid black;
     border-radius:10px;
-    width:44%;
+    width:40%;
     height:700px;
     overflow: auto;
     background-color:white;
