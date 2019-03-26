@@ -1,0 +1,15 @@
+.fileList{
+    overflow: auto;
+}
+
+h2{
+    padding:5px;
+    font-size: 14px;
+    color:gray;
+    cursor: pointer;
+}
+
+h2:hover{
+    background-color:lightgray;
+    opacity: 0.8;
+}

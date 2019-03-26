@@ -41,9 +41,8 @@ li a.active {
     font-size:25pt;
     font-weight:bold;
     color:black;
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
+    float:right;
+    margin-right: 10px;
   }
 
 #runButton{

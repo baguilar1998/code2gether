@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Program } from 'src/app/models/Program';
 
 @Component({
   selector: 'app-program-files',
@@ -6,6 +7,33 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./program-files.component.css']
 })
 export class ProgramFilesComponent implements OnInit {
+
+fileList: Program[] = [
+  {
+    name:'Hello.java',
+    code:'sdfsdf'
+  },
+  {
+    name:'Tristen.java',
+    code:'is trash'
+  },
+  {
+    name:'Danish.java',
+    code:'is trash'
+  },
+  {
+    name:'Project1.java',
+    code:'is trash'
+  },
+  {
+    name:'Project2.java',
+    code:'is trash'
+  },
+  {
+    name:'World.java',
+    code:'sdfsdsdff'
+  }
+];
 
   constructor() { }
 
