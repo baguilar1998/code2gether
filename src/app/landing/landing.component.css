@@ -19,11 +19,11 @@
   margin-top:30px;
   z-index:4;
 }
-/*.landing-body{
+.landing-body{
   position: absolute;
   width:100%;
   height:100%;
-}*/
+}
 .item-1{
   z-index:3;
   width:100%;
@@ -124,3 +124,4 @@ Welcome Sign
   border: 2px solid #FF4500;
   cursor: pointer;
 }
+
