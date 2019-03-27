@@ -1,29 +1,42 @@
 <div id="mainModalDiv" class="modal animate">
         <span (click)="changeState('home')" class="close">&times;</span>
-        <form class="modal-content">
+        <form [formGroup]="form" class="modal-content">
           <div class="imgcontainer">
               <img src="../../../assets/coding-1.png" alt="Avatar" class="avatar">
           </div>
 
           <div class="container">
+            <!--First Name-->
+            <div class="form-group">
               <label for="fname"><b>First Name</b></label>
-              <input id = "inputClass" type="text" name="fname" required>
+              <input formControlName="firstName" id = "inputClass" type="text" name="fname">
+            </div>
 
-              <label for="lname"><b>Last Name</b></label>
-              <input id = "inputClass" type="text" name="uname" required>
+            <!--Last Name-->
+            <div class="form-group">
+                <label for="lname"><b>Last Name</b></label>
+                <input formControlName="lastName" id="inputClass" type="text" name="uname">
+            </div>
 
-
+            <!--Username-->
+            <div class="form-group">
               <label for="uname"><b>Username</b></label>
-              <input id = "inputClass" type="text" name="uname" required>
+              <input formControlName="username" id="inputClass" type="text" name="uname">
+            </div>
 
-
+            <!--Email-->
+            <div class="form-group">
               <label for="email"><b>Email</b></label>
-              <input id = "inputClass" type="text" name="uname" required>
+              <input formControlName="email" id="inputClass" type="text" name="uname">
+            </div>
 
+            <!--Password-->
+            <div class="form-group">
               <label for="psw"><b>Password</b></label>
-              <input id = "inputClass" type="password" name="psw" required>
+              <input formControlName="password" id="inputClass" type="password" name="psw">
+            </div>
 
-              <button type="submit">Sign Up</button>
+              <button (click)="signup()" type="submit">Sign Up</button>
               <span id = "signUpSpan">Already have an account? &nbsp;<a href="javascript:void(0)" (click)="changeState('signin')">Sign in</a></span>
           </div>
 
