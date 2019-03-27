@@ -13,16 +13,12 @@ a:hover{
     justify-content: center;
 }
 
-#inputClass{
-    border: 1px solid #888;
-    border-radius: 25px;;
-}
-
 /* Full-width input fields */
 input[type=text], input[type=password] {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
+    outline: none;
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
@@ -36,11 +32,12 @@ input[type=text], input[type=password] {
     margin: 8px 0;
     cursor: pointer;
     width: 100%;
-    border-radius: 25px;
     border: 0.5px solid black;
   }
 
   button:hover {
+    transition: 0.2s;
+    border: 0.5px solid #FF4500;
     background-color:#FF4500;
     opacity: 0.8;
   }
@@ -53,9 +50,7 @@ input[type=text], input[type=password] {
   }
 
   img.avatar {
-    width: 20%;
-    border-radius: 50%;
-    border: 3px solid #000;
+    width: 30%;
   }
 
   .container {
@@ -73,11 +68,11 @@ input[type=text], input[type=password] {
     z-index: 1; /* Sit on top */
     left: 0;
     top: 0;
-    width: 60%; /* Full width */
+    width: 35%; /* Full width */
     height: 60%; /* Full height */
+    min-width: 600px;
     /*overflow: auto; /* Enable scroll if needed */
-    background-color: #FF4500; /* Fallback color */
-    background-color: #FF4500; /* Black w/ opacity */
+    background-color: #fefefe; /* Fallback color */
     border: 1px solid black;
     border-radius: 25px;
     padding-top: 35px;
@@ -89,9 +84,8 @@ input[type=text], input[type=password] {
   .modal-content {
     background-color: #fefefe;
     margin: 0% auto 0% auto; /* 5% from the top, 15% from the bottom and centered */
-    border: 1px solid #888;
-    border-radius: 25px;
-    width: 80%; /* Could be more or less, depending on screen size */
+    width: 100%; /* Could be more or less, depending on screen size */
+    height:100%;
   }
 
   /* The Close Button (x) */
@@ -99,6 +93,7 @@ input[type=text], input[type=password] {
     position:relative;
     float:right;
     margin-right:20px;
+    margin-bottom:20px;
     color: #000;
     font-size: 35px;
     font-weight: bold;

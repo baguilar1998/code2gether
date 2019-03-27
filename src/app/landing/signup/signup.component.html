@@ -1,27 +1,27 @@
-<div id="mainModalDiv" class="modal">
-        <form class="modal-content animate">
-          <span (click)="changeState('home')" class="close">&times;</span>
+<div id="mainModalDiv" class="modal animate">
+        <span (click)="changeState('home')" class="close">&times;</span>
+        <form class="modal-content">
           <div class="imgcontainer">
-              <img src="../../../assets/img_avatar3.png" alt="Avatar" class="avatar">
+              <img src="../../../assets/coding-1.png" alt="Avatar" class="avatar">
           </div>
 
           <div class="container">
               <label for="fname"><b>First Name</b></label>
-              <input id = "inputClass" type="text" placeholder="Enter First Name" name="fname" required>
+              <input id = "inputClass" type="text" name="fname" required>
 
               <label for="lname"><b>Last Name</b></label>
-              <input id = "inputClass" type="text" placeholder="Enter Last Name" name="uname" required>
+              <input id = "inputClass" type="text" name="uname" required>
 
 
               <label for="uname"><b>Username</b></label>
-              <input id = "inputClass" type="text" placeholder="Enter Username" name="uname" required>
+              <input id = "inputClass" type="text" name="uname" required>
 
 
               <label for="email"><b>Email</b></label>
-              <input id = "inputClass" type="text" placeholder="Enter Email Address" name="uname" required>
+              <input id = "inputClass" type="text" name="uname" required>
 
               <label for="psw"><b>Password</b></label>
-              <input id = "inputClass" type="password" placeholder="Enter Password" name="psw" required>
+              <input id = "inputClass" type="password" name="psw" required>
 
               <button type="submit">Sign Up</button>
               <span id = "signUpSpan">Already have an account? &nbsp;<a href="javascript:void(0)" (click)="changeState('signin')">Sign in</a></span>

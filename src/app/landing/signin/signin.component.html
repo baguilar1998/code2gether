@@ -1,18 +1,23 @@
-<div id="mainModalDiv" class="modal">
-    <form class="modal-content animate">
-        <span (click)="changeState('home')" class="close">&times;</span>
+<div id="mainModalDiv" class="modal animate">
+    <span (click)="changeState('home')" class="close">&times;</span>
+    <form [formGroup]="this.form" class="modal-content">
       <div class="imgcontainer">
-          <img src="../../../assets/img_avatar3.png" alt="Avatar" class="avatar">
+          <img src="../../../assets/coding-1.png" alt="Avatar" class="avatar">
       </div>
 
       <div class="container">
-        <label for="uname"><b>Username</b></label>
-        <input id = "inputClass" type="text" placeholder="Enter Username" name="uname" required>
+        <div class="form-group">
+            <label for="uname"><b>Username</b></label>
+            <input formControlName="username" id = "inputClass" type="text" name="uname">
+        </div>
 
-        <label for="psw"><b>Password</b></label>
-        <input id = "inputClass" type="password" placeholder="Enter Password" name="psw" required>
+        <div class="form-group">
+            <label for="psw"><b>Password</b></label>
+            <input formControlName="password" id = "inputClass" type="password"  name="psw" >
+        </div>
 
-        <button type="submit">Login</button>
+
+        <button (click)="signin()" type="submit">Login</button>
         <span id ="signUpSpan">Need an account? &nbsp;<a href="javascript:void(0)" (click)="changeState('signup')">Sign up</a></span>
       </div>
 

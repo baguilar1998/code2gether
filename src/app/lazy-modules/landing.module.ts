@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LandingComponent } from '../landing/landing.component';
 import { SigninComponent } from '../landing/signin/signin.component';
 import { SignupComponent } from '../landing/signup/signup.component';
@@ -15,6 +16,8 @@ const routes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forChild(routes)
   ],
   declarations: [
