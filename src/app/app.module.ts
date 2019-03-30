@@ -34,6 +34,7 @@ import { CodeEditorComponent } from './main/project-editor/code-editor/code-edit
 import { CompilerComponent } from './main/project-editor/compiler/compiler.component';
 import { CreateNewProjectComponent } from './main/create-new-project/create-new-project.component';
 import { ProgramFilesComponent } from './main/project-editor/program-files/program-files.component';
+import { LoadingComponent } from './loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { ProgramFilesComponent } from './main/project-editor/program-files/progr
     CodeEditorComponent,
     CompilerComponent,
     CreateNewProjectComponent,
-    ProgramFilesComponent
+    ProgramFilesComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,

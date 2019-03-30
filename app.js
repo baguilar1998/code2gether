@@ -21,12 +21,13 @@ app.use((req, res, next) =>{
 });
 
 //Database setup
-/*const uri = 'LINK FOR THE DATABASE';
+//mongodb+srv://admin:qMyzMeqozIf2Db1T@cluster0-on2wx.mongodb.net/test?retryWrites=true
+const uri = 'mongodb+srv://admin:qMyzMeqozIf2Db1T@cluster0-on2wx.mongodb.net/test?retryWrites=true';
 mongoose.connect(uri, { useNewUrlParser:true}).then(()=>{
   console.log('connected to the database');
 }).catch(()=>{
   console.log('could not connect to the database');
-});*/
+});
 
 
 /**
