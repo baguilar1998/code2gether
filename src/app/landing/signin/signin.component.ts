@@ -9,11 +9,15 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class SigninComponent implements OnInit {
 
   @Output() stateChange = new EventEmitter<string>();
-  username: string;
-  password: string;
-  form: FormGroup;
+  username: string; // username that user typed in
+  password: string; // password that user typed in
+  form: FormGroup; // stores user and password value in a form
   constructor() { }
 
+  /**
+   * Functions that happens when the component
+   * is loaded
+   */
   ngOnInit() {
     this.username = '';
     this.password = '';
@@ -23,10 +27,18 @@ export class SigninComponent implements OnInit {
     });
   }
 
+  /**
+   * Goes back to the home component
+   * @param state the next state the user goes to
+   */
   changeState(state: string): void {
     this.stateChange.emit(state);
   }
 
+  /**
+   * Signs the user into the site which
+   * will redirect them into the main page
+   */
   signin(): void {
     // CODE LATER TO BE IMPLEMENTED
     console.log('Username: ' + this.form.value.username + ' Password: ' + this.form.value.password);

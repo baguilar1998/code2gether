@@ -1,12 +1,15 @@
+<!--Landing Page-->
 <div class="container">
   <div class="landing-body">
+    <!--DIV Tags to create the background for the first item you see-->
     <div class="item-1-background"></div>
     <div class="item-1-background-color"></div>
+    <!--Item List-->
     <div class="item-list">
-
+      <!--Welcome Item (Includes Signin and Signup-->
         <div class="item-1">
             <div class="header">
-                <label class="title">code2gether</label>
+              <label class="title">code2gether</label>
             </div>
             <!--Contents to where the modals will be-->
               <div class="welcome" *ngIf="componentState === 'home'">
@@ -30,29 +33,50 @@
                 <app-signup (stateChange)="changeState($event)"></app-signup>
               </div>
           </div>
+          <!--Card Item (Contains information about the site)-->
           <div class="item-2">
             <div class="card-list">
               <div class="card">
-                <!--<img src="img_avatar.png" alt="Avatar" style="width:100%">-->
                 <div class="card-container">
-                  <h4><b>John Doe</b></h4>
-                    <p>Architect & Engineer</p>
+                  <div class="card-head">
+                    <h1>Create Projects Up To 5 Different Languages</h1>
+                  </div>
+                  <div class="card-body">
+                    <img id="card-img-1" src="../../assets/card-icon1.png" />
+                  </div>
+                  <div class="card-footer">
+                    <p>Talk about all the languages that you can progrom in</p>
+                  </div>
                     </div>
                 </div>
                 <div class="card">
-                <!--<img src="img_avatar.png" alt="Avatar" style="width:100%">-->
+                  <!--Card 2-->
                   <div class="card-container">
-                    <h4><b>John Doe</b></h4>
-                      <p>Architect & Engineer</p>
+                    <div class="card-head">
+                      <h1>TITLE TO BE ANNOUNCED</h1>
+                    </div>
+                    <div class="card-body">
+                      <img id="card-img-2" src="../../assets/card-icon2.png" />
+                    </div>
+                    <div class="card-footer">
+                      <p>Talk about how its smoother to work on projects with friends</p>
+                    </div>
                       </div>
                   </div>
+                  <!--Card 3-->
                   <div class="card">
-                    <!--<img src="img_avatar.png" alt="Avatar" style="width:100%">-->
                     <div class="card-container">
-                      <h4><b>John Doe</b></h4>
-                        <p>Architect & Engineer</p>
-                        </div>
-                    </div>
+                      <div class="card-head">
+                        <h1>TITLE TO BE ANNOUNCED</h1>
+                      </div>
+                      <div class="card-body">
+                        <img id="card-img-3" src="../../assets/card-icon3.png" />
+                      </div>
+                      <div class="card-footer">
+                          <p>Talk about how using this platform is more efficient</p>
+                      </div>
+                      </div>
+                  </div>
               </div>
           </div>
           <div class="item-3">

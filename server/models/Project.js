@@ -11,6 +11,10 @@ var ProjectSchema = new mongoose.Schema({
       deafult: String,
       required: true
     },
+    desc: {
+      type: String,
+      default: String
+    },
     editors: {
       type: Array,
       default: []
