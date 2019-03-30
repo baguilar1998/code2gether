@@ -2,40 +2,62 @@
   <div class="landing-body">
     <div class="item-1-background"></div>
     <div class="item-1-background-color"></div>
-      <div class="item-1">
-        <div class="header">
-            <label class="title">code2gether</label>
-        </div>
-        <!--Contents to where the modals will be-->
-          <div class="welcome" *ngIf="componentState === 'home'">
-            <div class="welcome-header">
-              <div class="code-icon">
-                <img class="img-icon" src="../../assets/coding-1.png"/>
-              </div>
-              <div class="quote">
-                <h1 id="quote">A collaborative place for coders.</h1>
-              </div>
-              <div class="buttonHolder">
-                  <button id="signinButton" (click)="changeState('signin')">Sign in</button>
-              </div>
-            </div>
+    <div class="item-list">
 
-          </div>
-          <div class="signin" *ngIf="componentState === 'signin'">
-            <app-signin (stateChange)="changeState($event)"></app-signin>
-          </div>
-          <div class="signup" *ngIf="componentState === 'signup'">
-            <app-signup (stateChange)="changeState($event)"></app-signup>
-          </div>
-      </div>
-      <div class="item-2">
-        <!--<div class="card">
-          <!--<img src="img_avatar.png" alt="Avatar" style="width:100%">
-          <div class="card-container">
-            <h4><b>John Doe</b></h4>
-              <p>Architect & Engineer</p>
+        <div class="item-1">
+            <div class="header">
+                <label class="title">code2gether</label>
             </div>
-          </div>-->
-      </div>
+            <!--Contents to where the modals will be-->
+              <div class="welcome" *ngIf="componentState === 'home'">
+                <div class="welcome-header">
+                  <div class="code-icon">
+                    <img class="img-icon" src="../../assets/coding-1.png"/>
+                  </div>
+                  <div class="quote">
+                    <h1 id="quote">A collaborative place for coders.</h1>
+                  </div>
+                  <div class="buttonHolder">
+                      <button id="signinButton" (click)="changeState('signin')">Sign in</button>
+                  </div>
+                </div>
+
+              </div>
+              <div class="signin" *ngIf="componentState === 'signin'">
+                <app-signin (stateChange)="changeState($event)"></app-signin>
+              </div>
+              <div class="signup" *ngIf="componentState === 'signup'">
+                <app-signup (stateChange)="changeState($event)"></app-signup>
+              </div>
+          </div>
+          <div class="item-2">
+            <div class="card-list">
+              <div class="card">
+                <!--<img src="img_avatar.png" alt="Avatar" style="width:100%">-->
+                <div class="card-container">
+                  <h4><b>John Doe</b></h4>
+                    <p>Architect & Engineer</p>
+                    </div>
+                </div>
+                <div class="card">
+                <!--<img src="img_avatar.png" alt="Avatar" style="width:100%">-->
+                  <div class="card-container">
+                    <h4><b>John Doe</b></h4>
+                      <p>Architect & Engineer</p>
+                      </div>
+                  </div>
+                  <div class="card">
+                    <!--<img src="img_avatar.png" alt="Avatar" style="width:100%">-->
+                    <div class="card-container">
+                      <h4><b>John Doe</b></h4>
+                        <p>Architect & Engineer</p>
+                        </div>
+                    </div>
+              </div>
+          </div>
+          <div class="item-3">
+            <!--CONTENT TO BE DECIDED-->
+          </div>
+    </div>
   </div>
 </div>

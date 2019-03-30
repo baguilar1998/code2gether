@@ -10,6 +10,7 @@
 }
 .header{
   width:100%;
+  z-index: 10;
 }
 .title {
   font-size:25pt;
@@ -17,25 +18,52 @@
   color:white;
   margin-left:30px;
   margin-top:30px;
-  z-index:4;
+  z-index: 10;
 }
 .landing-body{
   position: absolute;
   width:100%;
   height:100%;
 }
+.item-list{
+  display: flex;
+  flex-direction: column;
+}
 .item-1{
   z-index:3;
   width:100%;
   height:970px;
-  position: absolute;
+
 }
 .item-2{
   z-index:3;
   width:100%;
-  height:950px;
-  margin-bottom:970px;
-  background-color:white;
+  height:970px;
+}
+.item-3{
+  z-index:3;
+  width:100%;
+  height:970px;
+  background-color:black;
+}
+.card-list{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin:auto;
+}
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width:300px;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.card-container {
+  padding: 2px 16px;
 }
 .welcome{
   position: absolute;
