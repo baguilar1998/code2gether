@@ -4,7 +4,12 @@
   </div>
   <div class="body">
     <div class="create-project">
-      <button>Create a new project</button>
+      <button (click)="showProjectModal()" class="createButton" >Create A New Project</button>
+      <div class="project-modal" *ngIf="showModal">
+        <!--X button-->
+        <span (click)="showProjectModal()" class="close">&times;</span>
+        <app-create-new-project></app-create-new-project>
+      </div>
     </div>
     <div class="file-list">
 
