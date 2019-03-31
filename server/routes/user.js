@@ -45,7 +45,7 @@ router.post('/login', (req,res,next)=>{
   /**
    * Finds the user based off the user name
    */
-  User.findOne({usernamne: req.body.username})
+  User.findOne({username: req.body.username})
   .then(foundUser => {
 
     /**

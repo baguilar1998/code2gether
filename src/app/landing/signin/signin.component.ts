@@ -1,5 +1,7 @@
 import { Component, OnInit, EventEmitter, Output  } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { UserService } from '../../services/User/user.service';
+import { Router } from '../../../../node_modules/@angular/router';
 
 @Component({
   selector: 'app-signin',
@@ -12,7 +14,8 @@ export class SigninComponent implements OnInit {
   username: string; // username that user typed in
   password: string; // password that user typed in
   form: FormGroup; // stores user and password value in a form
-  constructor() { }
+  constructor(private userService: UserService,
+  private router: Router) { }
 
   /**
    * Functions that happens when the component
@@ -23,7 +26,7 @@ export class SigninComponent implements OnInit {
     this.password = '';
     this.form = new FormGroup({
       'username': new FormControl(this.username, {validators: [Validators.required]}),
-      'password': new FormControl(this.username, {validators: [Validators.required]}),
+      'password': new FormControl(this.password, {validators: [Validators.required]}),
     });
   }
 
@@ -40,7 +43,19 @@ export class SigninComponent implements OnInit {
    * will redirect them into the main page
    */
   signin(): void {
-    // CODE LATER TO BE IMPLEMENTED
-    console.log('Username: ' + this.form.value.username + ' Password: ' + this.form.value.password);
+
+    this.username = this.form.value.username;
+    this.password = this.form.value.password;
+
+    this.userService.login(this.username, this.password).subscribe(
+      (data) => {
+        this.userService.setUser(data);
+        this.router.navigate(['/projects']);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+
   }
 }

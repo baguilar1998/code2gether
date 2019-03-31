@@ -18,7 +18,6 @@ export class UserService {
    * @param userInfo required user information
    */
   signUp(userInfo: User): Observable<any> {
-    console.log(userInfo);
     return this.http.post<any>('//localhost:3000/api/user/signup', userInfo);
   }
 
