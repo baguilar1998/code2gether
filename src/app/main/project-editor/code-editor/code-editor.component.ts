@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '../../../../../node_modules/@angular/common/http';
 
 @Component({
   selector: 'app-code-editor',
@@ -7,11 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CodeEditorComponent implements OnInit {
 
-  constructor() { }
+  code: string;
+  constructor(private http: HttpClient) {
+    this.code = '';
+   }
 
   ngOnInit() {
   }
 
+  testCompile() {
+    console.log('button works');
+    this.http.post<any>('//localhost:3000/api/compiler/java', {code: this.code})
+    .subscribe((data) => {
+
+    });
+  }
   /**
    * Allows us to manipulate textarea for tab events
    * @param event key that user pressed on
