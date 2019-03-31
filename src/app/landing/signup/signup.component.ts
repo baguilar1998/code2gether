@@ -1,6 +1,8 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { User } from '../../models/User';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { UserService } from '../../services/User/user.service';
+import { Router } from '../../../../node_modules/@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -12,7 +14,8 @@ export class SignupComponent implements OnInit {
   @Output() stateChange = new EventEmitter<string>();
   user: User;
   form: FormGroup;
-  constructor() { }
+  constructor(private userService: UserService,
+  private router: Router) { }
 
   ngOnInit() {
     this.user = {
@@ -23,6 +26,9 @@ export class SignupComponent implements OnInit {
       email: '',
       password: ''
     };
+    /**
+     * Sets up the form
+     */
     this.form = new FormGroup({
       'firstName': new FormControl(this.user.firstName, {validators: [Validators.required]}),
       'lastName': new FormControl(this.user.lastName, {validators: [Validators.required]}),
@@ -32,12 +38,20 @@ export class SignupComponent implements OnInit {
     });
   }
 
+
+  /**
+   * Changes components based off user clicks
+   * @param state the next component state to go to
+   */
   changeState(state: string): void {
     this.stateChange.emit(state);
   }
 
   signup(): void {
-    // CODE TO BE LATER IMPLEMENTED
+    /**
+     * Get all the user information
+     * from the form
+     */
     this.user = {
       _id: '',
       username: this.form.value.username,
@@ -46,6 +60,19 @@ export class SignupComponent implements OnInit {
       email: this.form.value.email,
       password: this.form.value.password
     };
-    console.log(this.user);
+
+    /**
+     * Send the user information to the backend
+     * and sign the user up
+     */
+    this.userService.signUp(this.user).subscribe(
+      (user) => {
+        this.userService.setUser(user);
+        this.router.navigate(['/projects']);
+      },
+      (err) => {
+
+      }
+    );
   }
 }

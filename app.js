@@ -11,7 +11,6 @@ const io = require('socket.io')(http);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
-
 // Allows servers to communicate with each other
 app.use((req, res, next) =>{
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -21,6 +20,7 @@ app.use((req, res, next) =>{
 });
 
 //Database setup
+// mongo "mongodb+srv://cluster0-on2wx.mongodb.net/test" --username admin FOR TERMINAL
 //mongodb+srv://admin:qMyzMeqozIf2Db1T@cluster0-on2wx.mongodb.net/test?retryWrites=true
 const uri = 'mongodb+srv://admin:qMyzMeqozIf2Db1T@cluster0-on2wx.mongodb.net/test?retryWrites=true';
 mongoose.connect(uri, { useNewUrlParser:true}).then(()=>{
@@ -28,6 +28,16 @@ mongoose.connect(uri, { useNewUrlParser:true}).then(()=>{
 }).catch(()=>{
   console.log('could not connect to the database');
 });
+
+/**
+ * -----------------------------
+ * Route Imports
+ * -----------------------------
+ */
+const userRoute = require('./server/routes/user');
+
+
+app.use('/api/user',userRoute);
 
 
 /**
