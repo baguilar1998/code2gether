@@ -11,6 +11,7 @@ import { Router } from '../../../../node_modules/@angular/router';
 export class SigninComponent implements OnInit {
 
   @Output() stateChange = new EventEmitter<string>();
+  isLoading: boolean; // displays the loading component
   username: string; // username that user typed in
   password: string; // password that user typed in
   form: FormGroup; // stores user and password value in a form
@@ -24,6 +25,7 @@ export class SigninComponent implements OnInit {
   ngOnInit() {
     this.username = '';
     this.password = '';
+    this.isLoading = false;
     this.form = new FormGroup({
       'username': new FormControl(this.username, {validators: [Validators.required]}),
       'password': new FormControl(this.password, {validators: [Validators.required]}),
@@ -46,16 +48,22 @@ export class SigninComponent implements OnInit {
 
     this.username = this.form.value.username;
     this.password = this.form.value.password;
+    setTimeout(() => {
+      this.isLoading = true;
+      console.log(this.isLoading);
+      this.userService.login(this.username, this.password).subscribe(
+        (data) => {
+          this.userService.setUser(data);
+          this.isLoading = false;
+          this.router.navigate(['/projects']);
+        },
+        (err) => {
+          this.isLoading = false;
+          console.log(err);
+        }
+      );
+    }, 1000);
 
-    this.userService.login(this.username, this.password).subscribe(
-      (data) => {
-        this.userService.setUser(data);
-        this.router.navigate(['/projects']);
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
 
   }
 }

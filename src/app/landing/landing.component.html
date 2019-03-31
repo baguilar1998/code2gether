@@ -1,5 +1,6 @@
+<app-loading *ngIf="isLoading"></app-loading>
 <!--Landing Page-->
-<div class="container">
+<div class="container" *ngIf="!isLoading">
   <div class="landing-body">
     <!--DIV Tags to create the background for the first item you see-->
     <div class="item-1-background"></div>
@@ -8,7 +9,6 @@
     <div class="item-list">
       <!--Welcome Item (Includes Signin and Signup-->
         <div class="item-1">
-           <!-- <app-loading></app-loading>-->
             <div class="header">
               <label class="title">code2gether</label>
             </div>
