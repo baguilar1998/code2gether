@@ -1,34 +1,17 @@
 <div class="container">
-  <div class="header">
-   
     <div class="navbar">
-        <ul>
-            <li><a class="active" href="">Invite</a></li>
-            <li><a href="">Projects</a></li>
-            <li><a href="">Import</a></li>
-            <li  class="title"><label>code2gether</label></li>
-        </ul>
+      <app-navbar></app-navbar>
     </div>
-  </div>
   <div class="body">
     <div id = "file-list-div" class="file-list">
       <p style = "text-align: center"><b>File List</b></p>
       <app-program-files></app-program-files>
     </div>
     <div id = "code-editor-div" class="code-editor">
-        <textarea id="inputClass" placeholder="Write code here..."></textarea>
-        <button id = "runButton">Run</button>
+        <app-code-editor></app-code-editor>
     </div>
     <div  id = "compiler-div" class="compiler">
-      <p style = "text-align: center"><b>See your results here!</b></p>
+      <app-compiler></app-compiler>
     </div>
   </div>
 </div>
-<!--
-  TO ADD AN ANGULAR COMPONENT TO HTML WRITE THE FOLLOWING
-  <app-COMPONENTNAME></app-COMPONENTNAME>
-  COMPONENT NAME WILL BE THE COMPONENT YOU WANT TO INSERT INTO
-  THE PAGE
-  CHECK THE TS FOLDER AND LOOK AT SELECTOR TO SEE HOW TO WRITE
-  THE HTML FOR THE COMPONENT
--->

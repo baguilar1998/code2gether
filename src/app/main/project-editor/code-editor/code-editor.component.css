@@ -1,0 +1,19 @@
+.container {
+  overflow-y: scroll;
+  overflow-x:hidden;
+  width:100%;
+  height:100%;
+  z-index:1;
+}
+.editor{
+  height:92%;
+}
+.compile-button{
+  margin-top:10px;
+}
+#inputClass{
+  width:100%;
+  height:99%;
+  border:none;
+  padding:10px;
+}
