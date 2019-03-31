@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MainComponent } from './main/main.component';
 import { ProjectEditorComponent } from './main/project-editor/project-editor.component';
+import { LoadingComponent } from './loading/loading.component';
 const routes: Routes = [
   {
     path: '',

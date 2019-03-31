@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LandingComponent } from '../landing/landing.component';
 import { SigninComponent } from '../landing/signin/signin.component';
 import { SignupComponent } from '../landing/signup/signup.component';
+import { LoadingComponent } from '../loading/loading.component';
 import { Routes, RouterModule, Router } from '@angular/router';
 
 const routes: Routes = [
@@ -23,7 +24,8 @@ const routes: Routes = [
   declarations: [
     LandingComponent,
     SigninComponent,
-    SignupComponent
+    SignupComponent,
+    LoadingComponent
   ],
   exports: [RouterModule]
 })
