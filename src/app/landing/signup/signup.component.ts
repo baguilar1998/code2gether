@@ -2,7 +2,7 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { User } from '../../models/User';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UserService } from '../../services/User/user.service';
-import { Router } from '../../../../node_modules/@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',

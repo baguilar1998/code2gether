@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Program } from 'src/app/models/Program';
+import { Program } from '../../../models/Program';
 
 @Component({
   selector: 'app-program-files',
