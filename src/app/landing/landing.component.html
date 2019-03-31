@@ -1,6 +1,6 @@
-<app-loading *ngIf="isLoading"></app-loading>
+<app-loading *ngIf="this.loadingService.isLoading"></app-loading>
 <!--Landing Page-->
-<div class="container" *ngIf="!isLoading">
+<div class="container" *ngIf="!this.loadingService.isLoading">
   <div class="landing-body">
     <!--DIV Tags to create the background for the first item you see-->
     <div class="item-1-background"></div>

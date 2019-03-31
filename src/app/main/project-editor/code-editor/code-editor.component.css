@@ -12,8 +12,11 @@
   margin-top:10px;
 }
 #inputClass{
-  width:100%;
+  width:97%;
   height:99%;
+  font-size: 17pt;
   border:none;
+  outline: none !important;
+  resize: none;
   padding:10px;
 }

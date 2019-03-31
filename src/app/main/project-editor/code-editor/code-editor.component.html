@@ -3,7 +3,7 @@
     <button id = "runButton">Run</button>
   </div>
   <div class="editor">
-    <textarea id="inputClass" placeholder="Write code here..."></textarea>
+    <textarea (keydown)="keyBindings($event)" id="inputClass" placeholder="Write code here..."></textarea>
   </div>
 </div>
 

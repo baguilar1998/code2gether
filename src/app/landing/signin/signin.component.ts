@@ -2,6 +2,7 @@ import { Component, OnInit, EventEmitter, Output  } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UserService } from '../../services/User/user.service';
 import { Router } from '../../../../node_modules/@angular/router';
+import { LoadingService } from '../../services/Loading/loading.service';
 
 @Component({
   selector: 'app-signin',
@@ -11,12 +12,12 @@ import { Router } from '../../../../node_modules/@angular/router';
 export class SigninComponent implements OnInit {
 
   @Output() stateChange = new EventEmitter<string>();
-  isLoading: boolean; // displays the loading component
   username: string; // username that user typed in
   password: string; // password that user typed in
   form: FormGroup; // stores user and password value in a form
   constructor(private userService: UserService,
-  private router: Router) { }
+  private router: Router,
+  private loadingService: LoadingService) { }
 
   /**
    * Functions that happens when the component
@@ -25,7 +26,6 @@ export class SigninComponent implements OnInit {
   ngOnInit() {
     this.username = '';
     this.password = '';
-    this.isLoading = false;
     this.form = new FormGroup({
       'username': new FormControl(this.username, {validators: [Validators.required]}),
       'password': new FormControl(this.password, {validators: [Validators.required]}),
@@ -48,17 +48,16 @@ export class SigninComponent implements OnInit {
 
     this.username = this.form.value.username;
     this.password = this.form.value.password;
+    this.loadingService.startLoading();
     setTimeout(() => {
-      this.isLoading = true;
-      console.log(this.isLoading);
       this.userService.login(this.username, this.password).subscribe(
         (data) => {
           this.userService.setUser(data);
-          this.isLoading = false;
+          this.loadingService.stopLoading();
           this.router.navigate(['/projects']);
         },
         (err) => {
-          this.isLoading = false;
+          this.loadingService.stopLoading();
           console.log(err);
         }
       );
