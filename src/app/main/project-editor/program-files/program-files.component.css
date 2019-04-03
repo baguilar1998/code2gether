@@ -1,15 +1,17 @@
 .fileList{
-    overflow: auto;
+    height:60px;
+    transition: .3s;
+    font-size:13pt;
+    display:flex;
+    justify-content: center;
+    align-items: center;
 }
-
-h2{
-    padding:5px;
-    font-size: 14px;
-    color:gray;
+.fileList img{
+  width:200px;
+}
+.fileList:hover{
+    background-color:#FF4500;
+    color:white;
     cursor: pointer;
-}
-
-h2:hover{
-    background-color:lightgray;
     opacity: 0.8;
 }

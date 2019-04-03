@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Program } from '../../../models/Program';
+import { ProgramService } from '../../../services/Program/program.service';
 
 @Component({
   selector: 'app-program-files',
@@ -8,36 +9,17 @@ import { Program } from '../../../models/Program';
 })
 export class ProgramFilesComponent implements OnInit {
 
-fileList: Program[] = [
-  {
-    name:'Hello.java',
-    code:'sdfsdf'
-  },
-  {
-    name:'Tristen.java',
-    code:'is trash'
-  },
-  {
-    name:'Danish.java',
-    code:'is trash'
-  },
-  {
-    name:'Project1.java',
-    code:'is trash'
-  },
-  {
-    name:'Project2.java',
-    code:'is trash'
-  },
-  {
-    name:'World.java',
-    code:'sdfsdsdff'
+  constructor(private programService: ProgramService) { }
+
+  ngOnInit() {}
+
+  /**
+   * Switches the code on the code editor component
+   * based off of the program that the user clicked
+   * @param index the program that the user clicked
+   * @param event the html element that the user clicked
+   */
+  switchProgram(index, event) {
+    console.log(event.target);
   }
-];
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
 }

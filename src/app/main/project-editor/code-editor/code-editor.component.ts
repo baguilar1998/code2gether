@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ProgramService } from '../../../services/Program/program.service';
 
 @Component({
   selector: 'app-code-editor',
@@ -9,8 +10,9 @@ import { HttpClient } from '@angular/common/http';
 export class CodeEditorComponent implements OnInit {
 
   code: string;
-  constructor(private http: HttpClient) {
-    this.code = '';
+  constructor(private http: HttpClient,
+  private programService: ProgramService) {
+    this.code = this.programService.programList[0].code;
    }
 
   ngOnInit() {

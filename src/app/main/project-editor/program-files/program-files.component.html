@@ -1,3 +1,8 @@
-<div class = "fileList" *ngFor = "let file of fileList; index as i">
-  <h2><img style = "width:5%;" src="../../../../assets/fileIcon.png"/> {{file.name}}</h2>
+<div class="container">
+  <div class = "fileList" *ngFor = "let file of this.programService.programList; index as i" (click)="switchProgram(i,$event)">
+    <div class="content">
+        <img style = "width:7%;" src="../../../../assets/fileIcon.png"/>
+        {{file.name}}
+    </div>
+  </div>
 </div>
