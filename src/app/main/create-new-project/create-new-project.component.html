@@ -1,7 +1,7 @@
-<!--Sign In Container-->
+<!--Create New Project Container-->
 <div id="mainModalDiv" class="modal animate">
     <!--Start of form-->
-    <form class="modal-content">
+    <form [formGroup]="this.form" class="modal-content">
       <div class="header">
         <h1>Create A New Project</h1>
       </div>
@@ -9,23 +9,25 @@
       <div class="container">
         <!--Project Name-->
         <div class="form-group">
-            <label for="pname"><b>Project Name</b></label>
-            <input id = "inputClass" type="text" name="pname">
+            <label>Project Name</label>
+            <input formControlName="projectName" id = "inputClass" type="text" name="pname">
         </div>
 
         <!--Project Description-->
         <div class="form-group">
-          <label for="desc"><b>Description</b></label>
-          <input id ="inputClass" type="text" name="desc">
+          <label for="desc">Description</label><br/>
+          <textarea formControlName="description" id="desc" type="text" name="desc"></textarea>
         </div>
 
-        <!--Password-->
         <div class="form-group">
-            <label for="psw"><b>Password</b></label>
-            <input id = "inputClass" type="password"  name="psw" >
+          <label for="desc">Programming Language</label>
+          <select  formControlName="language" class="language">
+            <option *ngFor = "let l of languages" [value]="l">{{l}}</option>
+          </select>
         </div>
+
         <!--Submit-->
-        <button type="submit">Submit</button>
+        <button (click)="createProject()" type="submit">Submit</button>
       </div>
     </form>
  </div>

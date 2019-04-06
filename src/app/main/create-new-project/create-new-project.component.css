@@ -30,7 +30,7 @@ button {
   padding: 14px 20px;
   margin: 8px 0;
   cursor: pointer;
-  width: 100%;
+  width: 70%;
   border: 0.5px solid black;
 }
 
@@ -41,24 +41,9 @@ button:hover {
   opacity: 0.8;
 }
 
-/* Center the image and position the close button */
-.imgcontainer {
-  text-align: center;
-  margin: 24px 0 12px 0;
-  position: relative;
-}
-
-img.avatar {
-  width: 30%;
-}
 
 .container {
   padding: 16px;
-}
-
-span.psw {
-  float: right;
-  padding-top: 16px;
 }
 
 /* The Modal (background) */
@@ -128,4 +113,15 @@ span.psw {
   .cancelbtn {
      width: 100%;
   }
+}
+
+#desc{
+  width:100%;
+  outline: none;
+  resize: none;
+  height:50px;
+}
+
+.form-group{
+  text-align:left;
 }
