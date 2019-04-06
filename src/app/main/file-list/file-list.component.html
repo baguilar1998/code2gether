@@ -1,3 +1,22 @@
-<p>
-  file-list works!
-</p>
+<div class="container-file">
+  <div class="file-item" *ngFor="let p of this.projectService.projects">
+    <div class="file-details">
+      <!--Program Image-->
+      <div class="file-img">
+        <img src="../../../assets/program.png"/>
+      </div>
+      <!--Container For Project Name-->
+      <div class="project-name">
+        <h2>{{p.name}}</h2>
+      </div>
+      <!--Container For Project Language-->
+      <div class="project-language">
+        <h3>{{p.language}}</h3>
+      </div>
+      <!--Delete or Leave Project-->
+      <div class="close-container">
+          <span class="close">&times;</span>
+      </div>
+    </div>
+  </div>
+</div>

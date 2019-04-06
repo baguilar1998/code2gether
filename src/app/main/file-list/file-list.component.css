@@ -1,0 +1,38 @@
+.container-file{
+  width:100%;
+}
+.file-item:hover{
+  background-color:rgba(207, 207, 207, 0.329);
+  cursor: pointer;
+}
+.file-details{
+  display: flex;
+  flex-direction: row;
+}
+.file-img img{
+  width:80px;
+  height:80px;
+}
+.project-name{
+  width:50%;
+}
+.project-language{
+  width:40%;
+}
+h2,h3{
+  margin-left:20px;
+}
+.close {
+  position:relative;
+  float:right;
+  margin-right:30px;
+  color: #000;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: red;
+  cursor: pointer;
+}
