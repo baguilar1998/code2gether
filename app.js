@@ -36,10 +36,11 @@ mongoose.connect(uri, { useNewUrlParser:true}).then(()=>{
  */
 const userRoute = require('./server/routes/user');
 const compilerRoute = require('./server/routes/compiler');
-
+const projectRoute = require('./server/routes/project');
 
 app.use('/api/user',userRoute);
 app.use('/api/compiler', compilerRoute);
+app.use('/api/project', projectRoute);
 
 
 /**

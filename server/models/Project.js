@@ -15,6 +15,11 @@ var ProjectSchema = new mongoose.Schema({
       type: String,
       default: String
     },
+    urlKey: {
+      type:String,
+      default:String,
+      required: true
+    },
     editors: {
       type: Array,
       default: []

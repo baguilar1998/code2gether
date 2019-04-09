@@ -22,6 +22,10 @@ var UserSchema = new mongoose.Schema({
     default:String,
     required:true
   },
+  projects: {
+    type: Schema.Types.ObjectId,
+    ref: 'Project'
+  },
   password: {
     type:String,
     default:String,

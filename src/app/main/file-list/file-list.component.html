@@ -15,7 +15,24 @@
       </div>
       <!--Delete or Leave Project-->
       <div class="close-container">
-          <span class="close">&times;</span>
+          <span (click)="displayDeleteModal()" class="close">&times;</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Delete Project-->
+<div class="delete-modal" *ngIf="showDeleteModal">
+  <div class="modal animate">
+    <div class="header">
+      <h2>Are you sure you want to delete this project?</h2>
+    </div>
+    <div class="buttons">
+      <div class="accept-button">
+        <button class="accept">Yes</button>
+      </div>
+      <div class="reject-button">
+        <button class="reject" (click)="displayDeleteModal()" >No</button>
       </div>
     </div>
   </div>

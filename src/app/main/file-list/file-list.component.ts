@@ -8,9 +8,16 @@ import { ProjectService } from '../../services/Project/project.service';
 })
 export class FileListComponent implements OnInit {
 
-  constructor(private projectService: ProjectService) { }
+  showDeleteModal: boolean;
+  constructor(private projectService: ProjectService) {
+    this.showDeleteModal = false;
+  }
 
   ngOnInit() {
   }
 
+  displayDeleteModal(): void {
+    console.log('this button works');
+    this.showDeleteModal = !this.showDeleteModal;
+  }
 }
