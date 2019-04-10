@@ -9,15 +9,25 @@ import { ProjectService } from '../../services/Project/project.service';
 export class FileListComponent implements OnInit {
 
   showDeleteModal: boolean;
+  currentIndex: number;
   constructor(private projectService: ProjectService) {
     this.showDeleteModal = false;
+    this.currentIndex = -1;
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   displayDeleteModal(): void {
-    console.log('this button works');
     this.showDeleteModal = !this.showDeleteModal;
+  }
+
+  setIndex(i: number): void {
+    this.currentIndex = i;
+  }
+
+  removeProject(): void {
+    this.projectService.projects.splice(this.currentIndex , 1);
+    this.currentIndex = 0;
+    this.displayDeleteModal();
   }
 }

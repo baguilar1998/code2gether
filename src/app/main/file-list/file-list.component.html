@@ -1,5 +1,5 @@
 <div class="container-file">
-  <div class="file-item" *ngFor="let p of this.projectService.projects">
+  <div class="file-item" *ngFor="let p of this.projectService.projects; let i = index ">
     <div class="file-details">
       <!--Program Image-->
       <div class="file-img">
@@ -15,7 +15,7 @@
       </div>
       <!--Delete or Leave Project-->
       <div class="close-container">
-          <span (click)="displayDeleteModal()" class="close">&times;</span>
+          <span (click)="displayDeleteModal(); setIndex(i);" class="close">&times;</span>
       </div>
     </div>
   </div>
@@ -29,10 +29,10 @@
     </div>
     <div class="buttons">
       <div class="accept-button">
-        <button class="accept">Yes</button>
+        <button (click)="removeProject()" class="accept">Yes</button>
       </div>
       <div class="reject-button">
-        <button class="reject" (click)="displayDeleteModal()" >No</button>
+        <button class="reject" (click)="displayDeleteModal(); setIndex(-1);" >No</button>
       </div>
     </div>
   </div>
