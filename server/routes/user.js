@@ -4,8 +4,11 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 const mongoose = require('mongoose');
 const User = require('../models/User');
+
+const checkAuth = require('../middle-ware/check-auth');
 
 router.post('/signup', (req,res,next)=>{
 
@@ -68,8 +71,18 @@ router.post('/login', (req,res,next)=>{
       return res.status(401).json({message: "Failed to log in"});
     }
 
+    const token = jwt.sign(
+      {currentUser: user},
+      'secret_this_should_be_longer',
+      {expiresIn: '1h'}
+    );
+
     // Return the user information
-    res.status(200).send(user);
+    res.status(200).send({
+      currentUser: user,
+      token: token,
+      expiresIn: 3600
+    });
   })
 
 });

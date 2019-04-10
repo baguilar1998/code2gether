@@ -52,8 +52,9 @@ export class SigninComponent implements OnInit {
     setTimeout(() => {
       this.userService.login(this.username, this.password).subscribe(
         (data) => {
-          this.userService.setUser(data);
+          this.userService.setUser(data.currentUser);
           this.loadingService.stopLoading();
+          this.userService.setToken(data);
           this.router.navigate(['/projects']);
         },
         (err) => {
