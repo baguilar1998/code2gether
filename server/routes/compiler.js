@@ -10,15 +10,6 @@ const compiler = require('compile-run');
   memoryUsage: 393216,
   cpuUsage: 47000 }
  */
-router.post('/test', (req,res,next)=>{
-  const sourcecode = 'print("Hello World")';
-  let codeResults = compiler.python.runSource(sourcecode);
-  codeResults.then(result=>{
-    console.log(result);
-  }).catch(err=>{
-    console.log(err);
-  });
-});
 
 /**
  * Route to compile python code
@@ -66,8 +57,10 @@ router.post('/java', (req,res,next)=>{
   const sourcecode = req.body.code ;
   let codeResults = compiler.java.runSource(sourcecode);
   codeResults.then(result=>{
-    console.log(result);
+    // console.log(result);
+    res.send(result);
   }).catch(err=>{
+    res.status(401).send(err);
     console.log(err);
   });
 });

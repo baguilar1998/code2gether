@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 var ProjectSchema = new mongoose.Schema({
     owner: {
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
         required: true
     },

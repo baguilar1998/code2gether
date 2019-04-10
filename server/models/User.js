@@ -23,7 +23,7 @@ var UserSchema = new mongoose.Schema({
     required:true
   },
   projects: {
-    type: Schema.Types.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: 'Project'
   },
   password: {

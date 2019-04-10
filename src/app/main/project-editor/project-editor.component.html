@@ -8,10 +8,10 @@
       <app-program-files></app-program-files>
     </div>
     <div id = "code-editor-div" class="code-editor">
-        <app-code-editor></app-code-editor>
+        <app-code-editor (codeToCompile)="compiler.compile($event)"></app-code-editor>
     </div>
     <div  id = "compiler-div" class="compiler">
-      <app-compiler></app-compiler>
+      <app-compiler #compiler ></app-compiler>
     </div>
   </div>
 </div>

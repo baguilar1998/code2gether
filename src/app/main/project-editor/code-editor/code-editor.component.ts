@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ProgramService } from '../../../services/Program/program.service';
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-code-editor',
@@ -10,6 +11,7 @@ import { ProgramService } from '../../../services/Program/program.service';
 export class CodeEditorComponent implements OnInit {
 
   code: string;
+  @Output() codeToCompile = new EventEmitter();
   constructor(private http: HttpClient,
   private programService: ProgramService) {
     this.code = this.programService.programList[0].code;
@@ -19,11 +21,8 @@ export class CodeEditorComponent implements OnInit {
   }
 
   testCompile() {
-    console.log('button works');
-    this.http.post<any>('//localhost:3000/api/compiler/java', {code: this.code})
-    .subscribe((data) => {
+    this.codeToCompile.emit(this.code);
 
-    });
   }
   /**
    * Allows us to manipulate textarea for tab events
