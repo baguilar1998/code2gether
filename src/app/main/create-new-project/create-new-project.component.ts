@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { UserService } from '../../services/User/user.service';
+import { ProjectService } from '../../services/Project/project.service';
 @Component({
   selector: 'app-create-new-project',
   templateUrl: './create-new-project.component.html',
@@ -12,7 +14,8 @@ export class CreateNewProjectComponent implements OnInit {
   description: string;
   language: string;
   form: FormGroup;
-  constructor() { }
+  constructor(private userService: UserService,
+  private projectService: ProjectService) { }
 
   ngOnInit() {
     this.projectName = '';
@@ -30,6 +33,23 @@ export class CreateNewProjectComponent implements OnInit {
     this.projectName = this.form.value.projectName;
     this.description = this.form.value.description;
     this.language = this.form.value.language;
+
+    const projectInformation = {
+      user: this.userService.getUser()._id,
+      name: this.projectName,
+      description: this.description,
+      language: this.language
+    };
+
+    this.projectService.createProject(projectInformation)
+    .subscribe(
+      (res) => {
+
+      },
+      (err) => {
+
+      }
+    );
 
   }
 

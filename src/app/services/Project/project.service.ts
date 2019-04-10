@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Project } from '../../models/Project';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '../../../../node_modules/@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +10,8 @@ import { Project } from '../../models/Project';
 export class ProjectService {
 
   projects: Project[];
-  constructor() {
+  currentProject: Project;
+  constructor(private http: HttpClient) {
     this.projects = [
       {
         _id: '',
@@ -42,5 +46,13 @@ export class ProjectService {
         language: 'Python'
       },
     ];
+
+    // Changes as they navigate through different projects
+    this.currentProject = null;
+   }
+
+
+   createProject(projectInformation): Observable<any> {
+     return this.http.post<any>('//localhost:3000/api/project/createProject', projectInformation);
    }
 }

@@ -39,6 +39,9 @@ export class UserService {
     return this.http.post<any>('//localhost:3000/api/user/login', requiredInformation);
   }
 
+  getUser(): User {
+    return this.user;
+  }
   /**
    * Sets the user data to use for the entire website
    * @param currentUser the user information
