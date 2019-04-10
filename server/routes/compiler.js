@@ -19,6 +19,7 @@ router.post('/python', (req,res,next)=>{
   let codeResults = compiler.python.runSource(sourcecode);
   codeResults.then(result=>{
     console.log(result);
+    res.send(result);
   }).catch(err=>{
     console.log(err);
   });
@@ -32,6 +33,7 @@ router.post('/cplusplus', (req,res,next)=>{
   let codeResults = compiler.cpp.runSource(sourcecode);
   codeResults.then(result=>{
     console.log(result);
+    res.send(result);
   }).catch(err=>{
     console.log(err);
   });
@@ -45,6 +47,7 @@ router.post('/c', (req,res,next)=>{
   let codeResults = compiler.cpp.runSource(sourcecode);
   codeResults.then(result=>{
     console.log(result);
+    res.send(result);
   }).catch(err=>{
     console.log(err);
   });
@@ -74,6 +77,7 @@ router.post('/javascript', (req,res,next)=>{
   let codeResults = compiler.node.runSource(sourcecode);
   codeResults.then(result=>{
     console.log(result);
+    res.send(result);
   }).catch(err=>{
     console.log(err);
   });

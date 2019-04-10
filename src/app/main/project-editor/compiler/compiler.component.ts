@@ -13,25 +13,96 @@ export class CompilerComponent implements OnInit {
   ngOnInit() {
   }
 
-  compile(code): void {
+  compile(program): void {
     const compilerEditor = document.getElementById('compiler');
     compilerEditor.innerHTML += '<span style="color:white; margin-left:10px;"> Code is compiling... </span><br/>';
 
-    this.compilerService.compileJavaCode(code).subscribe(
-      (compiledCode) => {
-        console.log(compiledCode);
-        if (!compiledCode.stdout) {
-          compilerEditor.innerHTML += '<span style="color:red; margin-left:10px;">' + compiledCode.stderr + '</span><br/>';
-        } else {
-          compilerEditor.innerHTML += '<span style="color:white; margin-left:10px;">' + compiledCode.stdout + '</span><br/>';
-        }
-      },
-      (runtimeError) => {
-        console.log(runtimeError);
-        compilerEditor.innerHTML += '<span style="color:red; margin-left:10px;">' + runtimeError.stderr + '</span><br/>';
-      }
-    );
+    switch (program.language) {
+      case 'Java':
+        this.compilerService.compileJavaCode(program.code).subscribe(
+          (compiledCode) => {
+            console.log(compiledCode);
+            if (!compiledCode.stdout) {
+              compilerEditor.innerHTML += '<span style="color:red; margin-left:10px;">' + compiledCode.stderr + '</span><br/>';
+            } else {
+              compilerEditor.innerHTML += '<span style="color:white; margin-left:10px;">' + compiledCode.stdout + '</span><br/>';
+            }
+          },
+          (runtimeError) => {
+            console.log(runtimeError);
+            compilerEditor.innerHTML += '<span style="color:red; margin-left:10px;">' + runtimeError.stderr + '</span><br/>';
+          }
+        );
+        break;
 
+        case 'C++':
+          this.compilerService.compileCPlusPlusCode(program.code).subscribe(
+            (compiledCode) => {
+              console.log(compiledCode);
+              if (!compiledCode.stdout) {
+                compilerEditor.innerHTML += '<span style="color:red; margin-left:10px;">' + compiledCode.stderr + '</span><br/>';
+              } else {
+                compilerEditor.innerHTML += '<span style="color:white; margin-left:10px;">' + compiledCode.stdout + '</span><br/>';
+              }
+            },
+            (runtimeError) => {
+              console.log(runtimeError);
+              compilerEditor.innerHTML += '<span style="color:red; margin-left:10px;">' + runtimeError.stderr + '</span><br/>';
+            }
+          );
+          break;
+        case 'Python':
+          this.compilerService.compilePythonCode(program.code).subscribe(
+            (compiledCode) => {
+              console.log(compiledCode);
+              if (!compiledCode.stdout) {
+                compilerEditor.innerHTML += '<span style="color:red; margin-left:10px;">' + compiledCode.stderr + '</span><br/>';
+              } else {
+                compilerEditor.innerHTML += '<span style="color:white; margin-left:10px;">' + compiledCode.stdout + '</span><br/>';
+              }
+            },
+            (runtimeError) => {
+              console.log(runtimeError);
+              compilerEditor.innerHTML += '<span style="color:red; margin-left:10px;">' + runtimeError.stderr + '</span><br/>';
+            }
+          );
+          break;
+
+        case 'C':
+          this.compilerService.compileCCode(program.code).subscribe(
+            (compiledCode) => {
+              console.log(compiledCode);
+              if (!compiledCode.stdout) {
+                compilerEditor.innerHTML += '<span style="color:red; margin-left:10px;">' + compiledCode.stderr + '</span><br/>';
+              } else {
+                compilerEditor.innerHTML += '<span style="color:white; margin-left:10px;">' + compiledCode.stdout + '</span><br/>';
+              }
+            },
+            (runtimeError) => {
+              console.log(runtimeError);
+              compilerEditor.innerHTML += '<span style="color:red; margin-left:10px;">' + runtimeError.stderr + '</span><br/>';
+            }
+          );
+          break;
+
+        case 'Javascript':
+          this.compilerService.compileJavascriptCode(program.code).subscribe(
+            (compiledCode) => {
+              console.log(compiledCode);
+              if (!compiledCode.stdout) {
+                compilerEditor.innerHTML += '<span style="color:red; margin-left:10px;">' + compiledCode.stderr + '</span><br/>';
+              } else {
+                compilerEditor.innerHTML += '<span style="color:white; margin-left:10px;">' + compiledCode.stdout + '</span><br/>';
+              }
+            },
+            (runtimeError) => {
+              console.log(runtimeError);
+              compilerEditor.innerHTML += '<span style="color:red; margin-left:10px;">' + runtimeError.stderr + '</span><br/>';
+            }
+          );
+          break;
+
+    }
   }
 }
 /*

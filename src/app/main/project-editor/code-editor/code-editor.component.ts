@@ -2,6 +2,7 @@ import { Component, OnInit, Output } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ProgramService } from '../../../services/Program/program.service';
 import { EventEmitter } from '@angular/core';
+import { ProjectService } from '../../../services/Project/project.service';
 
 @Component({
   selector: 'app-code-editor',
@@ -13,7 +14,8 @@ export class CodeEditorComponent implements OnInit {
   code: string;
   @Output() codeToCompile = new EventEmitter();
   constructor(private http: HttpClient,
-  private programService: ProgramService) {
+  private programService: ProgramService,
+  private projectService: ProjectService) {
     this.code = this.programService.programList[0].code;
    }
 
@@ -21,7 +23,11 @@ export class CodeEditorComponent implements OnInit {
   }
 
   testCompile() {
-    this.codeToCompile.emit(this.code);
+    const program = {
+      language: 'Python',
+      code: this.code
+    };
+    this.codeToCompile.emit(program);
 
   }
   /**
