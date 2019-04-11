@@ -13,7 +13,7 @@ export class FileListComponent implements OnInit {
   showDeleteModal: boolean;
   currentIndex: number;
   constructor(private projectService: ProjectService,
-  private userService: UserService
+  private userService: UserService,
   private router: Router) {
     this.showDeleteModal = false;
     this.currentIndex = -1;
