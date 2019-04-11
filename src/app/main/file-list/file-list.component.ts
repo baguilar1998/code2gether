@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProjectService } from '../../services/Project/project.service';
+import { Router } from '../../../../node_modules/@angular/router';
+import { UserService } from '../../services/User/user.service';
 
 @Component({
   selector: 'app-file-list',
@@ -10,7 +12,9 @@ export class FileListComponent implements OnInit {
 
   showDeleteModal: boolean;
   currentIndex: number;
-  constructor(private projectService: ProjectService) {
+  constructor(private projectService: ProjectService,
+  private userService: UserService
+  private router: Router) {
     this.showDeleteModal = false;
     this.currentIndex = -1;
   }
@@ -19,6 +23,11 @@ export class FileListComponent implements OnInit {
 
   displayDeleteModal(): void {
     this.showDeleteModal = !this.showDeleteModal;
+  }
+
+  gotoProject(i: number): void {
+    const selectedProject = this.projectService.projects[i];
+    this.router.navigate([this.userService.getUser().username, selectedProject.urlKey]);
   }
 
   setIndex(i: number): void {

@@ -1,5 +1,5 @@
 <div class="container-file">
-  <div class="file-item" *ngFor="let p of this.projectService.projects; let i = index ">
+  <div (click)="gotoProject(i)" class="file-item" *ngFor="let p of this.projectService.projects; let i = index ">
     <div class="file-details">
       <!--Program Image-->
       <div class="file-img">

@@ -58,7 +58,7 @@ export class UserService {
       const now = new Date();
       const expirationDate = new Date(now.getTime() + expiresInDuration * 1000);
       this.saveAuthData(data.token, expirationDate);
-      localStorage.setItem('user',JSON.stringify(this.user));
+      localStorage.setItem('user', JSON.stringify(this.user));
       this.authenticated = true;
       this.router.navigate(['/projects']);
     }

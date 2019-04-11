@@ -19,6 +19,7 @@ export class ProjectService {
         name: 'Project 1',
         editors: [],
         maxUsers: 8,
+        urlKey: 'dfgdfg',
         language: 'Java'
       },
       {
@@ -27,6 +28,7 @@ export class ProjectService {
         name: 'Project 2',
         editors: [],
         maxUsers: 8,
+        urlKey: 'dfgdfg',
         language: 'Java'
       },
       {
@@ -35,6 +37,7 @@ export class ProjectService {
         name: 'Project 3',
         editors: [],
         maxUsers: 8,
+        urlKey: 'dfgdfg',
         language: 'C++'
       },
       {
@@ -43,8 +46,9 @@ export class ProjectService {
         name: 'Project 4',
         editors: [],
         maxUsers: 8,
+        urlKey: 'dfgdfg',
         language: 'Python'
-      },
+      }
     ];
 
     // Changes as they navigate through different projects
