@@ -14,6 +14,7 @@ export class MainComponent implements OnInit {
   ngOnInit() {
     this.showModal = false;
     this.userService.autoAuthUser();
+    console.log(this.userService.getUser());
   }
 
   /**

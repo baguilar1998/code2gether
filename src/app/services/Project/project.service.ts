@@ -55,4 +55,12 @@ export class ProjectService {
    createProject(projectInformation): Observable<any> {
      return this.http.post<any>('//localhost:3000/api/project/createProject', projectInformation);
    }
+
+   setCurrentProject(project: Project): void {
+     this.currentProject = project;
+   }
+
+   getCurrentProject(): Project {
+     return this.currentProject;
+   }
 }

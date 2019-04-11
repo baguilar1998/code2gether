@@ -20,6 +20,10 @@ const routes: Routes = [
   {
     path: 'account',
     component: AccountComponent
+  },
+  {
+    path: ':user/:id',
+    component: ProjectEditorComponent
   }
 ];
 

@@ -6,5 +6,6 @@ export class Project {
   name: string;
   editors: User[];
   maxUsers: number;
+  urlKey: string;
   language: string;
 }
