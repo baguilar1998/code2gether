@@ -40,7 +40,7 @@ export class ProgramService {
         program.name += '.cpp';
         break;
       case 'C':
-        program.code = '#include <stdio.h>' +
+        program.code = '#include <stdio.h>\n' +
                         'int main(){\n' +
                           '\t return 0; \n' +
                         '}';

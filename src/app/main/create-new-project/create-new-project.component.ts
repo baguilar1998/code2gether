@@ -34,6 +34,8 @@ export class CreateNewProjectComponent implements OnInit {
       'description': new FormControl(this.description, {validators: [Validators.required]}),
       'language': new FormControl(this.language, {validators: [Validators.required]})
     });
+    this.programService.programList = [];
+    this.projectService.setCurrentProject(null);
   }
 
   createProject(): void {

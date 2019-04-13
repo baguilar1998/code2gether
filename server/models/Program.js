@@ -14,7 +14,6 @@ var ProgramSchema = new mongoose.Schema({
     code: {
       type: String,
       default: String,
-      required: true
     }
 });
 
