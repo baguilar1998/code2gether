@@ -36,6 +36,10 @@ import { CompilerComponent } from './main/project-editor/compiler/compiler.compo
 import { CreateNewProjectComponent } from './main/create-new-project/create-new-project.component';
 import { ProgramFilesComponent } from './main/project-editor/program-files/program-files.component';
 import { AccountComponent } from './main/account/account.component';
+import { LandingComponent } from './landing/landing.component';
+import { SigninComponent } from './landing/signin/signin.component';
+import { SignupComponent } from './landing/signup/signup.component';
+import { LoadingComponent } from './loading/loading.component';
 // import { LoadingComponent } from './loading/loading.component';
 
 @NgModule({
@@ -50,7 +54,11 @@ import { AccountComponent } from './main/account/account.component';
     CompilerComponent,
     CreateNewProjectComponent,
     ProgramFilesComponent,
-    AccountComponent
+    AccountComponent,
+    LandingComponent,
+    SigninComponent,
+    SignupComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,

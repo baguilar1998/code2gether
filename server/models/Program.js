@@ -1,6 +1,11 @@
 const mongoose = require('mongoose');
 
 var ProgramSchema = new mongoose.Schema({
+    projectId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Project',
+      requried: true
+    },
     name: {
       type: String,
       default: String,
@@ -8,7 +13,8 @@ var ProgramSchema = new mongoose.Schema({
     },
     code: {
       type: String,
-      default: String
+      default: String,
+      required: true
     }
 });
 

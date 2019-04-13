@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MainComponent } from './main/main.component';
+import { LandingComponent } from './landing/landing.component';
 import { ProjectEditorComponent } from './main/project-editor/project-editor.component';
-import { LoadingComponent } from './loading/loading.component';
 import { AccountComponent } from './main/account/account.component';
 const routes: Routes = [
   {
     path: '',
-    loadChildren: './lazy-modules/landing.module#LandingModule'
+    component: LandingComponent
   },
   {
     path: 'projects',

@@ -3,6 +3,9 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UserService } from '../../services/User/user.service';
 import { ProjectService } from '../../services/Project/project.service';
 import { Router } from '../../../../node_modules/@angular/router';
+import { LoadingService } from '../../services/Loading/loading.service';
+import { ProgramService } from '../../services/Program/program.service';
+import { Program } from '../../models/Program';
 @Component({
   selector: 'app-create-new-project',
   templateUrl: './create-new-project.component.html',
@@ -17,6 +20,8 @@ export class CreateNewProjectComponent implements OnInit {
   form: FormGroup;
   constructor(private userService: UserService,
   private projectService: ProjectService,
+  private programService: ProgramService,
+  private loadingService: LoadingService,
   private router: Router) { }
 
   ngOnInit() {
@@ -32,6 +37,7 @@ export class CreateNewProjectComponent implements OnInit {
   }
 
   createProject(): void {
+    this.loadingService.startLoading();
     this.projectName = this.form.value.projectName;
     this.description = this.form.value.description;
     this.language = this.form.value.language;
@@ -49,10 +55,24 @@ export class CreateNewProjectComponent implements OnInit {
         console.log(res);
         this.projectService.setCurrentProject(res);
         this.projectService.projects.push(this.projectService.getCurrentProject());
-        this.router.navigate([this.userService.getUser().username, this.projectService.getCurrentProject().urlKey]);
+        this.programService.addProgram('Main').subscribe(
+          (finalRes) => {
+            // Get the program results and push it to the programs array
+            const program: Program = {
+              name: finalRes.name,
+              code: finalRes.code
+            };
+            this.programService.programList.push(program);
+            this.loadingService.stopLoading();
+            this.router.navigate([this.userService.getUser().username, this.projectService.getCurrentProject().urlKey]);
+          },
+          (finalErr) => {
+            this.loadingService.stopLoading();
+          }
+        );
       },
       (err) => {
-
+        this.loadingService.stopLoading();
       }
     );
 

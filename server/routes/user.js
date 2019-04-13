@@ -10,6 +10,10 @@ const User = require('../models/User');
 
 const checkAuth = require('../middle-ware/check-auth');
 
+/**
+ * Signs the user up and stores all user
+ * information inside the database
+ */
 router.post('/signup', (req,res,next)=>{
 
   /**
@@ -43,6 +47,11 @@ router.post('/signup', (req,res,next)=>{
 
 });
 
+/**
+ * Logs the user into our website
+ * Checks for validation for both username
+ * and password
+ */
 router.post('/login', (req,res,next)=>{
   let user;
   /**
@@ -71,6 +80,11 @@ router.post('/login', (req,res,next)=>{
       return res.status(401).json({message: "Failed to log in"});
     }
 
+    /**
+     * Create a web token. This is what will be
+     * used to allow the user to stay on the page with
+     * their current information if they refresh the page
+     */
     const token = jwt.sign(
       {currentUser: user},
       'secret_this_should_be_longer',
