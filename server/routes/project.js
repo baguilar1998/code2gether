@@ -55,6 +55,14 @@ router.get('/getProject', (req,res,next)=>{
 });
 
 /**
+ * Gets all of the current projects that the user
+ * is working on
+ */
+router.post('getProjects', (req,res,next)=>{
+
+});
+
+/**
  * Adds programs to their projects
  */
 router.post('/addProgram', (req,res,next)=>{
