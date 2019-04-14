@@ -1,3 +1,42 @@
-<p>
-  account works!
-</p>
+<div class="container">
+  <div class="navbar">
+    <app-navbar></app-navbar>
+  </div>
+<div class="body">
+
+  <div id = "left-account-div" class="left-div">
+    <p style = "text-align: center; font-size:25px; margin-top:100px"><b>Username</b></p>
+    <img id = "profileImage" src = "../../../assets/img_avatar3.png">
+    <p style = "text-align: center; font-size:15px;"><b><i>First name, Last name</i></b></p>
+ 
+    <!--Here is where the title will go-->
+    <h3 id = "titleHeader">Software Engineer</h3>
+ 
+  </div>
+  
+  <div id = "right-account-div" class="right-div">
+        <!--Username-->
+        <div class="form-group">
+            <label for="uname"><b>Change Username</b></label>
+            <input id = "inputClass" type="text" name="uname" placeholder="We'll let you know if it's taken!">
+        </div>
+
+        <!--Bio-->
+        <div class="form-group">
+            <label for="bio"><b>Bio</b></label>
+            <textarea id = "bioInput" type="text" name="bio" 
+            placeholder="A little about your programming skills..."></textarea>
+        </div>
+
+        <!--Password-->
+        <div class="form-group">
+            <label for="title"><b>Title</b></label>
+            <input id = "inputClass" type="text"  name="title" placeholder="Frontend Developer, Javascript Developer,... etc.">
+        </div>
+        <!--Sign In-->
+        <button id = "updateButton" type="submit">Update</button>
+  </div>
+
+</div>
+
+</div>
