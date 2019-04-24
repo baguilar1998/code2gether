@@ -59,6 +59,10 @@ export class ProjectService {
      return this.http.post<any>('//localhost:3000/api/project/createProject', projectInformation);
    }
 
+   getUserProjects(userId: string) {
+     const requiredInformation = {userId: userId};
+     return this.http.post<any>('//localhost:3000/api/project/getProjects', requiredInformation);
+   }
    setCurrentProject(project: Project): void {
      this.currentProject = project;
    }

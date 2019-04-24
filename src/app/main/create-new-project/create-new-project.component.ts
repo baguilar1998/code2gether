@@ -69,11 +69,13 @@ export class CreateNewProjectComponent implements OnInit {
             this.router.navigate([this.userService.getUser().username, this.projectService.getCurrentProject().urlKey]);
           },
           (finalErr) => {
+            console.log('hit error2');
             this.loadingService.stopLoading();
           }
         );
       },
       (err) => {
+        console.log('hit error1');
         this.loadingService.stopLoading();
       }
     );

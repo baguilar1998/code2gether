@@ -19,21 +19,51 @@ export class FileListComponent implements OnInit {
     this.currentIndex = -1;
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    /**
+     * When the user initially goes to the projects page
+     * we gather all the projects that the user is currently
+     * working on
+     */
+    this.projectService.getUserProjects(this.userService.getUser()._id).subscribe(
+    (data) => {
+       this.projectService.projects = data;
+    },
+    (err) => {
+    })
+  }
 
+  /**
+   * Shows/Removes the modal to delete
+   * a project
+   */
   displayDeleteModal(): void {
     this.showDeleteModal = !this.showDeleteModal;
   }
 
+  /**
+   * Takes the user to the project editor which allows them to edit
+   * the current project that they are working on
+   * @param i the index of the project that the user clicked
+   */
   gotoProject(i: number): void {
     const selectedProject = this.projectService.projects[i];
+    this.projectService.setCurrentProject(selectedProject);
     this.router.navigate([this.userService.getUser().username, selectedProject.urlKey]);
   }
 
+  /**
+   * Stores the index of the project that the user clicked on
+   * @param i the project index that they clicked on
+   */
   setIndex(i: number): void {
     this.currentIndex = i;
   }
 
+  /**
+   * Removes the project that the user has
+   * selected from the backend and from the screen
+   */
   removeProject(): void {
     this.projectService.projects.splice(this.currentIndex , 1);
     this.currentIndex = 0;

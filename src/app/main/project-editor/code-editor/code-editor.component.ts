@@ -1,4 +1,4 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit, Output, OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ProgramService } from '../../../services/Program/program.service';
 import { EventEmitter } from '@angular/core';
@@ -9,27 +9,33 @@ import { ProjectService } from '../../../services/Project/project.service';
   templateUrl: './code-editor.component.html',
   styleUrls: ['./code-editor.component.css']
 })
-export class CodeEditorComponent implements OnInit {
+export class CodeEditorComponent implements OnInit, OnDestroy {
 
   code: string;
   @Output() codeToCompile = new EventEmitter();
   constructor(private http: HttpClient,
   private programService: ProgramService,
   private projectService: ProjectService) {
-    this.code = this.programService.programList[0].code;
+    this.programService.getPrograms(this.projectService.getCurrentProject()._id)
+    .subscribe(
+      (data) => {
+        console.log('programs were loaded successfully');
+        this.programService.programList = data;
+        this.code = this.programService.programList[0].code;
+      },
+      (err) => {
+        console.log('there was an error in loading the programs');
+      }
+    );
    }
 
   ngOnInit() {
   }
 
-  testCompile() {
-    const program = {
-      language: 'Python',
-      code: this.code
-    };
-    this.codeToCompile.emit(program);
-
+  ngOnDestroy() {
+    this.projectService.setCurrentProject(null);
   }
+
   /**
    * Allows us to manipulate textarea for tab events
    * @param event key that user pressed on

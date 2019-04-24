@@ -56,6 +56,11 @@ export class ProgramService {
 
     return this.http.post<any>('//localhost:3000/api/project/addProgram', program);
   }
+
+  getPrograms(projectId: string): Observable<any> {
+    const requiredInformation = { projectId: projectId };
+    return this.http.post<any>('//localhost:3000/api/project/getPrograms', requiredInformation);
+  }
 }
 
 /**TEST DATA

@@ -50,7 +50,7 @@ router.post('/createProject', (req,res,next)=>{
  * Gets a project from the database
  * (Used when users want to access their projects)
  */
-router.get('/getProject', (req,res,next)=>{
+router.post('/getProject', (req,res,next)=>{
 
 });
 
@@ -58,8 +58,13 @@ router.get('/getProject', (req,res,next)=>{
  * Gets all of the current projects that the user
  * is working on
  */
-router.post('getProjects', (req,res,next)=>{
-
+router.post('/getProjects', (req,res,next)=>{
+  const userId = req.body.userId;
+  let projects;
+  Project.find({"owner":userId}).then(userprojects =>{
+    projects = userprojects;
+    res.status(200).send(projects);
+  });
 });
 
 /**
@@ -88,8 +93,15 @@ router.post('/addProgram', (req,res,next)=>{
  * Gets all the available programs from the
  * database
  */
-router.get('/getPrograms', (req,res,next)=>{
+router.post('/getPrograms', (req,res,next)=>{
+  const projectId = req.body.projectId;
+  console.log(projectId);
+  let programList;
 
+  Program.find({"projectId": projectId}).then(programs =>{
+    programList = programs;
+    res.status(200).send(programList);
+  })
 });
 
 module.exports = router;
