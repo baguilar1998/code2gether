@@ -8,14 +8,14 @@ import { UserService } from '../services/User/user.service';
 })
 export class MainComponent implements OnInit {
 
-  showModal: boolean;
+  projectModal: boolean;
+  joinModal: boolean;
   constructor(private userService: UserService) { }
 
   ngOnInit() {
-    this.showModal = false;
+    this.projectModal = false;
+    this.joinModal = false;
     this.userService.autoAuthUser();
-    localStorage.removeItem('currentProject');
-    console.log(this.userService.getUser());
   }
 
   /**
@@ -23,7 +23,15 @@ export class MainComponent implements OnInit {
    * depending on user clicks
    */
   showProjectModal(): void {
-    this.showModal = !this.showModal;
+    this.projectModal = !this.projectModal;
+  }
+
+    /**
+   * Shows the join a project modal or not
+   * depending on user clicks
+   */
+  showJoinModal(): void {
+    this.joinModal = !this.joinModal;
   }
 
 }

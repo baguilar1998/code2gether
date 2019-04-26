@@ -5,10 +5,15 @@
   <div class="body">
     <div class="create-project">
       <button (click)="showProjectModal()" class="createButton" >Create A New Project</button>
-      <div class="project-modal" *ngIf="showModal">
+      <button (click)="showJoinModal()" class="createButton">Join a Project</button>
+      <div class="project-modal" *ngIf="projectModal">
         <!--X button-->
         <span (click)="showProjectModal()" class="close">&times;</span>
         <app-create-new-project></app-create-new-project>
+      </div>
+      <div class="join-modal" *ngIf="joinModal">
+        <span (click)="showJoinModal()" class="close">&times;</span>
+        <app-join-project-modal></app-join-project-modal>
       </div>
     </div>
     <div class="file-list">

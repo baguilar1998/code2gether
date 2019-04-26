@@ -1,0 +1,17 @@
+<!--Join Project Container-->
+<div id="mainModalDiv" class="modal animate">
+    <!--Start of form-->
+    <form  class="modal-content">
+      <div class="header">
+        <h1 style="text-align: center">Join a Project</h1>
+      </div>
+      <!--Form Contents-->
+      <div class="container">
+        <!--Invitation Key-->
+          <label>Enter a invitation key</label>
+          <input [(ngModel)]="invitationInput" id = "inputClass" type="text" name="pname">
+        </div>
+        <!--Submit-->
+        <button (click)="joinRoom()">Join</button>
+    </form>
+ </div>
