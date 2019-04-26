@@ -47,10 +47,40 @@ router.post('/createProject', (req,res,next)=>{
 });
 
 /**
- * Gets a project from the database
- * (Used when users want to access their projects)
+ * Allows other users to join projects
  */
-router.post('/getProject', (req,res,next)=>{
+router.post('/joinProject', (req,res,next)=>{
+  const invitationInput = req.body.code;
+  Project.findOne({"urlKey": invitationInput}).then(project=>{
+    if(!project){
+      console.log("project was not found");
+    } else {
+      const userId = req.body.userId;
+      console.log(project);
+      if(project.owner === userId){
+        console.log("owner cannot join their own room");
+      } else {
+        res.status(200).send(project);
+      }
+    }
+  })
+
+});
+
+/**
+ * Pushes the user to the project so
+ * they become an editor now
+ */
+router.post('/pushToProject', (req,res,next)=>{
+  const user = req.body.user;
+  const project = req.body.projectId;
+  Project.updateOne({'_id':project}, {$push:{editors:user}} , {safe:true, multi:true} )
+  .then(project=>{
+    res.status(200).send(project);
+  }).catch(err=>{
+    console.log("There was an error in joining the project");
+    console.log(err);
+  })
 
 });
 
@@ -95,9 +125,7 @@ router.post('/addProgram', (req,res,next)=>{
  */
 router.post('/getPrograms', (req,res,next)=>{
   const projectId = req.body.projectId;
-  console.log(projectId);
   let programList;
-
   Program.find({"projectId": projectId}).then(programs =>{
     programList = programs;
     res.status(200).send(programList);

@@ -67,7 +67,8 @@ export class SignupComponent implements OnInit {
      */
     this.userService.signUp(this.user).subscribe(
       (user) => {
-        this.userService.setUser(user);
+        this.userService.setUser(user.currentUser);
+        this.userService.setToken(user);
         this.router.navigate(['/projects']);
       },
       (err) => {

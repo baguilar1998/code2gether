@@ -22,6 +22,14 @@ export class ProjectService {
      return this.http.post<any>('//localhost:3000/api/project/createProject', projectInformation);
    }
 
+   joinProject(invitationInformation): Observable<any> {
+     return this.http.post<any>('//localhost:3000/api/project/joinProject', invitationInformation);
+   }
+
+   pushToProject(requiredInformation): Observable<any> {
+     return this.http.post<any>('//localhost:3000/api/project/pushToProject', requiredInformation);
+   }
+
    getUserProjects(userId: string) {
      const requiredInformation = {userId: userId};
      return this.http.post<any>('//localhost:3000/api/project/getProjects', requiredInformation);

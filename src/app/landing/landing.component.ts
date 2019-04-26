@@ -14,6 +14,7 @@ export class LandingComponent implements OnInit {
    }
 
   ngOnInit() {
+    localStorage.removeItem('currentProject');
   }
 
   /**

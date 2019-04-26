@@ -40,6 +40,7 @@ import { LandingComponent } from './landing/landing.component';
 import { SigninComponent } from './landing/signin/signin.component';
 import { SignupComponent } from './landing/signup/signup.component';
 import { LoadingComponent } from './loading/loading.component';
+import { JoinProjectModalComponent } from './main/join-project-modal/join-project-modal.component';
 // import { LoadingComponent } from './loading/loading.component';
 
 @NgModule({
@@ -58,7 +59,8 @@ import { LoadingComponent } from './loading/loading.component';
     LandingComponent,
     SigninComponent,
     SignupComponent,
-    LoadingComponent
+    LoadingComponent,
+    JoinProjectModalComponent
   ],
   imports: [
     BrowserModule,

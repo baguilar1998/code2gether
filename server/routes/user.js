@@ -38,7 +38,17 @@ router.post('/signup', (req,res,next)=>{
      * @err an error occured in saving the user info in the db
      */
     user.save().then(result => {
-      res.status(201).send(result);
+      const token = jwt.sign(
+        {currentUser: result},
+        'secret_this_should_be_longer',
+        {expiresIn: '1h'}
+      );
+      res.status(201).send({
+        currentUser: result,
+        token: token,
+        expiresIn: 3600
+      });
+
     }).catch(err=>{
       console.log('An error has occured while putting the user in the db');
       res.status(500).send(err);
