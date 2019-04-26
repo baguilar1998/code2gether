@@ -11,44 +11,7 @@ export class ProjectService {
   projects: Project[];
   currentProject: Project;
   constructor(private http: HttpClient) {
-    this.projects = [
-      {
-        _id: '',
-        owner: '',
-        name: 'Project 1',
-        editors: [],
-        maxUsers: 8,
-        urlKey: 'dfgdfg',
-        language: 'Java'
-      },
-      {
-        _id: '',
-        owner: '',
-        name: 'Project 2',
-        editors: [],
-        maxUsers: 8,
-        urlKey: 'dfgdfg',
-        language: 'Java'
-      },
-      {
-        _id: '',
-        owner: '',
-        name: 'Project 3',
-        editors: [],
-        maxUsers: 8,
-        urlKey: 'dfgdfg',
-        language: 'C++'
-      },
-      {
-        _id: '',
-        owner: '',
-        name: 'Project 4',
-        editors: [],
-        maxUsers: 8,
-        urlKey: 'dfgdfg',
-        language: 'Python'
-      }
-    ];
+    this.projects = [];
 
     // Changes as they navigate through different projects
     this.currentProject = null;

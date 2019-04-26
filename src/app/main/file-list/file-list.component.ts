@@ -49,6 +49,7 @@ export class FileListComponent implements OnInit {
   gotoProject(i: number): void {
     const selectedProject = this.projectService.projects[i];
     this.projectService.setCurrentProject(selectedProject);
+    localStorage.setItem('currentProject', JSON.stringify(selectedProject));
     this.router.navigate([this.userService.getUser().username, selectedProject.urlKey]);
   }
 
