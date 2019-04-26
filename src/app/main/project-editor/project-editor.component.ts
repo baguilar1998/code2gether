@@ -16,7 +16,7 @@ export class ProjectEditorComponent implements OnInit {
     this.userService.autoAuthUser();
     const currentProject = JSON.parse(localStorage.getItem('currentProject'));
     this.projectService.setCurrentProject(currentProject);
-    this.router.navigate([this.userService.getUser().username, currentProject.urlKey]);
+    this.router.navigate([this.userService.getUser().username, this.projectService.getCurrentProject().urlKey]);
    }
 
   ngOnInit() {

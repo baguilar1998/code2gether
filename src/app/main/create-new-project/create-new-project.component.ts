@@ -56,6 +56,7 @@ export class CreateNewProjectComponent implements OnInit {
       (res) => {
         console.log(res);
         this.projectService.setCurrentProject(res);
+        localStorage.setItem('currentProject', JSON.stringify(this.projectService.getCurrentProject()));
         this.projectService.projects.push(this.projectService.getCurrentProject());
         this.programService.addProgram('Main').subscribe(
           (finalRes) => {
