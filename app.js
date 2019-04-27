@@ -53,6 +53,11 @@ io.on("connection", (socket)=>{
     console.log("Connection has been aborted");
   });
 
+  socket.on("joinProject", (user)=>{
+    console.log(user);
+    io.emit("joinProject",user);
+  })
+
 });
 
 http.listen(4444, ()=>{

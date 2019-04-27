@@ -22,7 +22,7 @@ const routes: Routes = [
     component: AccountComponent
   },
   {
-    path: ':user/:id',
+    path: ':id',
     component: ProjectEditorComponent
   }
 ];

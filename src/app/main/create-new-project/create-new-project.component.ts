@@ -67,7 +67,7 @@ export class CreateNewProjectComponent implements OnInit {
             };
             this.programService.programList.push(program);
             this.loadingService.stopLoading();
-            this.router.navigate([this.userService.getUser().username, this.projectService.getCurrentProject().urlKey]);
+            this.router.navigate([this.projectService.getCurrentProject().urlKey]);
           },
           (finalErr) => {
             console.log('hit error2');
