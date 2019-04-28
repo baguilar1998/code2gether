@@ -1,6 +1,6 @@
 <div class="container">
   <div class="compile-button">
-    <button (click)="testCompile()" id = "runButton">Run</button>
+    <button (click)="compileProgram()" id = "runButton">Run</button>
   </div>
   <div class="editor">
     <textarea  [(ngModel)]="code" (keyup)="editProgram()" (keydown)="keyBindings($event)" id="inputClass" placeholder="Write code here..."></textarea>

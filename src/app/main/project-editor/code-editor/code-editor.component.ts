@@ -51,6 +51,14 @@ export class CodeEditorComponent implements OnInit, OnDestroy {
     this.socket.emit('editProgram', this.code);
   }
 
+  compileProgram() {
+    const programInformation = {
+      code: this.code,
+      language: this.projectService.getCurrentProject().language
+    };
+    this.codeToCompile.emit(programInformation);
+  }
+
   /**
    * Allows us to manipulate textarea for tab events
    * @param event key that user pressed on

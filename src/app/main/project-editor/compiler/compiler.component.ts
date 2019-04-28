@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CompilerService } from '../../../services/Compiler/compiler.service';
-
+import { Socket } from 'ngx-socket-io';
 @Component({
   selector: 'app-compiler',
   templateUrl: './compiler.component.html',
@@ -8,9 +8,13 @@ import { CompilerService } from '../../../services/Compiler/compiler.service';
 })
 export class CompilerComponent implements OnInit {
 
-  constructor(private compilerService: CompilerService) { }
+  constructor(private compilerService: CompilerService,
+    private socket: Socket) { }
 
   ngOnInit() {
+    this.socket.on('compiledCode', (output) => {
+      console.log('Your output is: ' + output);
+    });
   }
 
   compile(program): void {
@@ -22,6 +26,7 @@ export class CompilerComponent implements OnInit {
         this.compilerService.compileJavaCode(program.code).subscribe(
           (compiledCode) => {
             console.log(compiledCode);
+            this.socket.emit('compiledCode', compiledCode.stdout);
             if (!compiledCode.stdout) {
               compilerEditor.innerHTML += '<span style="color:red; margin-left:10px;">' + compiledCode.stderr + '</span><br/>';
             } else {
@@ -39,6 +44,7 @@ export class CompilerComponent implements OnInit {
           this.compilerService.compileCPlusPlusCode(program.code).subscribe(
             (compiledCode) => {
               console.log(compiledCode);
+              this.socket.emit('compiledCode', compiledCode.stdout);
               if (!compiledCode.stdout) {
                 compilerEditor.innerHTML += '<span style="color:red; margin-left:10px;">' + compiledCode.stderr + '</span><br/>';
               } else {
@@ -55,6 +61,7 @@ export class CompilerComponent implements OnInit {
           this.compilerService.compilePythonCode(program.code).subscribe(
             (compiledCode) => {
               console.log(compiledCode);
+              this.socket.emit('compiledCode', compiledCode.stdout);
               if (!compiledCode.stdout) {
                 compilerEditor.innerHTML += '<span style="color:red; margin-left:10px;">' + compiledCode.stderr + '</span><br/>';
               } else {
@@ -72,6 +79,7 @@ export class CompilerComponent implements OnInit {
           this.compilerService.compileCCode(program.code).subscribe(
             (compiledCode) => {
               console.log(compiledCode);
+              this.socket.emit('compiledCode', compiledCode.stdout);
               if (!compiledCode.stdout) {
                 compilerEditor.innerHTML += '<span style="color:red; margin-left:10px;">' + compiledCode.stderr + '</span><br/>';
               } else {
@@ -89,6 +97,7 @@ export class CompilerComponent implements OnInit {
           this.compilerService.compileJavascriptCode(program.code).subscribe(
             (compiledCode) => {
               console.log(compiledCode);
+              this.socket.emit('compiledCode', compiledCode.stdout);
               if (!compiledCode.stdout) {
                 compilerEditor.innerHTML += '<span style="color:red; margin-left:10px;">' + compiledCode.stderr + '</span><br/>';
               } else {
@@ -105,10 +114,4 @@ export class CompilerComponent implements OnInit {
     }
   }
 }
-/*
-public class Main{
-    public static void main(String [] args){
-        System.out.println("Hello World");
-    }
-}
-*/
+

@@ -68,6 +68,10 @@ io.on("connection", (socket)=>{
     io.emit('editProgram',program);
   });
 
+  socket.on('compiledCode', (output)=>{
+    console.log("Output is: " + output);
+    io.emit('compiledCode', output);
+  });
 });
 
 http.listen(4444, ()=>{
