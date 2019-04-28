@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { ProgramService } from '../../../services/Program/program.service';
 import { EventEmitter } from '@angular/core';
 import { ProjectService } from '../../../services/Project/project.service';
-
+import { Socket } from 'ngx-socket-io';
 @Component({
   selector: 'app-code-editor',
   templateUrl: './code-editor.component.html',
@@ -15,18 +15,29 @@ export class CodeEditorComponent implements OnInit, OnDestroy {
   @Output() codeToCompile = new EventEmitter();
   constructor(private http: HttpClient,
   private programService: ProgramService,
-  private projectService: ProjectService) {
+  private projectService: ProjectService,
+  private socket: Socket) {
     this.programService.getPrograms(this.projectService.getCurrentProject()._id)
     .subscribe(
       (data) => {
         console.log('programs were loaded successfully');
         this.programService.programList = data;
         this.code = this.programService.programList[0].code;
+        this.socket.emit('currentProgram', this.code);
       },
       (err) => {
         console.log('there was an error in loading the programs');
       }
     );
+
+    this.socket.on('currentProgram', (program) => {
+      console.log(program);
+    });
+
+    this.socket.on('editProgram', (program) => {
+      console.log('Changes have been made to the program');
+      console.log(program);
+    });
    }
 
   ngOnInit() {
@@ -34,6 +45,10 @@ export class CodeEditorComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.projectService.setCurrentProject(null);
+  }
+
+  editProgram(): void {
+    this.socket.emit('editProgram', this.code);
   }
 
   /**

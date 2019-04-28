@@ -3,7 +3,7 @@
     <button (click)="testCompile()" id = "runButton">Run</button>
   </div>
   <div class="editor">
-    <textarea  [(ngModel)]="code" (keydown)="keyBindings($event)" id="inputClass" placeholder="Write code here..."></textarea>
+    <textarea  [(ngModel)]="code" (keyup)="editProgram()" (keydown)="keyBindings($event)" id="inputClass" placeholder="Write code here..."></textarea>
     <!--<code name="code" ngDeafultControl [innerHTML]="test()" [(ngModel)]="code" id="inputClass" contenteditable="true"></code>-->
   </div>
 </div>

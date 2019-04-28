@@ -46,6 +46,7 @@ app.use('/api/project', projectRoute);
 /**
  * Socket Set-up
  */
+const program ='';
 io.on("connection", (socket)=>{
   console.log("Connection has been established on localhost:4444");
 
@@ -57,6 +58,15 @@ io.on("connection", (socket)=>{
     console.log(user);
     io.emit("joinProject",user);
   })
+
+  socket.on('currentProgram', (program)=>{
+    console.log('Program you are editing: ' + program);
+  });
+
+  socket.on('editProgram', (program)=>{
+    console.log("changes have been made");
+    io.emit('editProgram',program);
+  });
 
 });
 

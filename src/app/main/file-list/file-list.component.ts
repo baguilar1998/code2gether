@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProjectService } from '../../services/Project/project.service';
 import { Router } from '../../../../node_modules/@angular/router';
 import { UserService } from '../../services/User/user.service';
+import { Socket } from 'ngx-socket-io';
 
 @Component({
   selector: 'app-file-list',
@@ -14,7 +15,8 @@ export class FileListComponent implements OnInit {
   currentIndex: number;
   constructor(private projectService: ProjectService,
   private userService: UserService,
-  private router: Router) {
+  private router: Router,
+  private socket: Socket) {
     this.showDeleteModal = false;
     this.currentIndex = -1;
   }
@@ -50,6 +52,7 @@ export class FileListComponent implements OnInit {
     const selectedProject = this.projectService.projects[i];
     this.projectService.setCurrentProject(selectedProject);
     localStorage.setItem('currentProject', JSON.stringify(selectedProject));
+    this.socket.emit('joinProject', this.userService.getUser());
     this.router.navigate([selectedProject.urlKey]);
   }
 

@@ -16,6 +16,7 @@ export class MainComponent implements OnInit {
     this.projectModal = false;
     this.joinModal = false;
     this.userService.autoAuthUser();
+    localStorage.removeItem('currentProject');
   }
 
   /**
