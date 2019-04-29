@@ -44,6 +44,7 @@ export class JoinProjectModalComponent implements OnInit {
               localStorage.setItem('currentProject', JSON.stringify(this.projectService.getCurrentProject()));
               // change routing information
               this.socket.emit('joinProject', this.userService.getUser());
+              this.router.navigate([this.projectService.getCurrentProject()._id]);
             },
             (finalErr) => {
               console.log(finalErr);

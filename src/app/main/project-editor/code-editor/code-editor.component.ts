@@ -37,6 +37,7 @@ export class CodeEditorComponent implements OnInit, OnDestroy {
     this.socket.on('editProgram', (program) => {
       console.log('Changes have been made to the program');
       console.log(program);
+      this.code = program;
     });
    }
 
