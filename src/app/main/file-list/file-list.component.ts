@@ -36,7 +36,7 @@ export class FileListComponent implements OnInit {
   }
 
   /**
-   * Shows/Removes the modal to delete
+   * Shows/Removes the modal to deleteol
    * a project
    */
   displayDeleteModal(): void {
