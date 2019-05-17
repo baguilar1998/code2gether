@@ -1,4 +1,8 @@
 <div class="container">
+  <!--
+    Displays the list of programs that the 
+    user can edit from the project
+  -->
   <div class = "fileList" *ngFor = "let file of this.programService.programList; index as i" (click)="switchProgram(i,$event)">
     <div class="content">
         <img style = "width:7%;" src="../../../../assets/fileIcon.png"/>

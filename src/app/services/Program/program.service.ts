@@ -1,3 +1,8 @@
+/**
+ * Program service that holds all data that is needed
+ * such as a program list for whenever a user is in the project
+ * editor and all possible backend calls that can be made
+ */
 import { Injectable } from '@angular/core';
 import { Program } from '../../models/Program';
 import { ProjectService } from '../Project/project.service';
@@ -15,13 +20,22 @@ export class ProgramService {
     this.programList = [];
   }
 
+  /**
+   * Adds a program to the database
+   * @param programName the name of the program that you want to add
+   * @result this only takes care of adding the main program
+   * due to time contraints other programs cannot be added
+   */
   addProgram(programName: string): Observable<any> {
+    // Set up necessary information needed for a program
     const program = {
       projectId: this.projectService.getCurrentProject()._id,
       name: programName,
       code: ''
     };
 
+    // Determine what language the program is in and send that program
+    // to the proper backend route
     switch (this.projectService.getCurrentProject().language) {
       case 'Java':
         program.code = 'public class Main{\n' +
@@ -62,30 +76,3 @@ export class ProgramService {
     return this.http.post<any>('//localhost:3000/api/project/getPrograms', requiredInformation);
   }
 }
-
-/**TEST DATA
- *       {
-        name: 'Hello.java',
-        code: 'sdfsdf'
-      },
-      {
-        name: 'Tristen.java',
-        code: 'is trash'
-      },
-      {
-        name: 'Danish.java',
-        code: 'is trash'
-      },
-      {
-        name: 'Project1.java',
-        code: 'is trash'
-      },
-      {
-        name: 'Project2.java',
-        code: 'is trash'
-      },
-      {
-        name: 'World.java',
-        code: 'sdfsdsdff'
-      }
- */

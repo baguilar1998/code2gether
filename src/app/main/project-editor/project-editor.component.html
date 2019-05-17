@@ -3,13 +3,22 @@
       <app-navbar></app-navbar>
     </div>
   <div class="body">
+    <!--
+      Displays the file list component
+    -->
     <div id = "file-list-div" class="file-list">
       <p style = "text-align: center"><b>File List</b></p>
       <app-program-files></app-program-files>
     </div>
+    <!--
+      Displays the code editor component
+    -->
     <div id = "code-editor-div" class="code-editor">
         <app-code-editor (codeToCompile)="compiler.compile($event)"></app-code-editor>
     </div>
+    <!--
+      Displays the compiler component
+    -->
     <div  id = "compiler-div" class="compiler">
       <app-compiler #compiler ></app-compiler>
     </div>

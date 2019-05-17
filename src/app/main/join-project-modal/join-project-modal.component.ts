@@ -25,35 +25,43 @@ export class JoinProjectModalComponent implements OnInit {
    * any other users are currently working on
    */
   joinRoom(): void {
-    if(!this.invitationInput) {
+    // Checks if the user inputted any inviation code
+    if (!this.invitationInput) {
       console.log('you did not enter any invitation code');
     } else {
+      // Sets up the required information needed in order for a user to join a project
       const requiredInformation = {code: this.invitationInput, userId: this.userService.getUser()._id};
+      // Send information to backend so the user can join the project
       this.projectService.joinProject(requiredInformation).subscribe(
-        (res1) =>{
-          console.log(res1);
+        (res1) => {
 
+          // Sets up the information to add the user to the editors array for a project
           const joinInformation = {
             user: this.userService.getUser()._id,
             projectId: res1._id
           };
 
+          // Sends that information to the backend to update the project
           this.projectService.pushToProject(joinInformation).subscribe(
             (finalRes) => {
-              this.projectService.setCurrentProject(res1);
+              this.projectService.setCurrentProject(res1); // sets their current project to the project that they are joining
+              // Adds the proejct to the local storage (for page refresh)
               localStorage.setItem('currentProject', JSON.stringify(this.projectService.getCurrentProject()));
-              // change routing information
+              // Emit the user information to notify all users taht a new user joined the project
               this.socket.emit('joinProject', this.userService.getUser());
+              // Naviage to the project editor page
               this.router.navigate([this.projectService.getCurrentProject()._id]);
             },
             (finalErr) => {
+              // Case where the user wasn't pushed to the editors array
               console.log(finalErr);
             }
           );
 
         },
         (err1) => {
-
+          // Case where there was an error in the user jonining the project
+          console.log('Cant join project');
         }
       );
     }

@@ -1,3 +1,7 @@
+/**
+ * A service that controls the logic of the
+ * loading component
+ */
 import { Injectable } from '@angular/core';
 
 @Injectable({

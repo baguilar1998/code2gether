@@ -1,5 +1,7 @@
 import { User } from './User';
-
+/**
+ * Front-end modal for a Project
+ */
 export class Project {
   _id: string;
   owner: string;  // change to user later

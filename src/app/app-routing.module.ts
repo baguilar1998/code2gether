@@ -1,3 +1,9 @@
+/**
+ * File that controls all possible routes
+ * that the user can make in the website and the proper
+ * components to display whenever the user accesses
+ * a certain route
+ */
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MainComponent } from './main/main.component';

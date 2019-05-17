@@ -18,6 +18,11 @@ export class ProjectEditorComponent implements OnInit {
     private router: Router,
     private socket: Socket) {
     this.currentUsers = [];
+    /**
+     * Load up necessary information if the user
+     * refreshes the page such as the current project their
+     * editing and their user information
+     */
     this.userService.autoAuthUser();
     const currentProject = JSON.parse(localStorage.getItem('currentProject'));
     this.projectService.setCurrentProject(currentProject);
@@ -25,8 +30,10 @@ export class ProjectEditorComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.socket.on('joinProject', (user) =>{
-      //console.log(user);
+    /**
+     * Emits the user that joined the project
+     */
+    this.socket.on('joinProject', (user) => {
       this.currentUsers.push(user);
       console.log(this.currentUsers);
     });

@@ -1,3 +1,8 @@
+<!--
+  Loading Bar for the page and only shows
+  whenever the user tries to sign up or sign
+  in the website
+-->
 <app-loading *ngIf="this.loadingService.isLoading"></app-loading>
 <!--Landing Page-->
 <div class="container" *ngIf="!this.loadingService.isLoading">
@@ -7,7 +12,7 @@
     <div class="item-1-background-color"></div>
     <!--Item List-->
     <div class="item-list">
-      <!--Welcome Item (Includes Signin and Signup-->
+      <!--Welcome Item (Includes Signin and Signup)-->
         <div class="item-1">
             <div class="header">
               <label class="title">code2gether</label>
@@ -22,21 +27,30 @@
                     <h1 id="quote">A collaborative place for coders.</h1>
                   </div>
                   <div class="buttonHolder">
+                    <!--A button to display the sign in modal-->
                       <button id="signinButton" (click)="changeState('signin')">Sign in</button>
                   </div>
                 </div>
 
               </div>
+              <!--Holds the sign in modal-->
               <div class="signin" *ngIf="componentState === 'signin'">
                 <app-signin (stateChange)="changeState($event)"></app-signin>
               </div>
+              <!--Holds the sign up modal-->
               <div class="signup" *ngIf="componentState === 'signup'">
                 <app-signup (stateChange)="changeState($event)"></app-signup>
               </div>
           </div>
           <!--Card Item (Contains information about the site)-->
           <div class="item-2">
+            <!--
+              Cards that shows what our website is about
+            -->
             <div class="card-list">
+              <!--
+                Programming languages you can develop in
+              -->
               <div class="card" style="background-color:#FF4500">
                 <div class="card-container">
                   <div class="card-head">
@@ -50,6 +64,10 @@
                   </div>
                     </div>
                 </div>
+                <!--
+                  Talks about how you can work on projects
+                  in real time
+                -->
                 <div class="card" style="background-color:skyblue">
                   <!--Card 2-->
                   <div class="card-container">
@@ -65,6 +83,10 @@
                       </div>
                   </div>
                   <!--Card 3-->
+                  <!--
+                    Talks about how you can compile your program
+                    online in our site
+                  -->
                   <div class="card" style="background-color:yellow">
                     <div class="card-container">
                       <div class="card-head">
@@ -89,3 +111,4 @@
     </div>
   </div>
 </div>
+

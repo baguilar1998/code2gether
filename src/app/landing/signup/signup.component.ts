@@ -11,8 +11,8 @@ import { Router } from '@angular/router';
 })
 export class SignupComponent implements OnInit {
 
-  @Output() stateChange = new EventEmitter<string>();
-  user: User;
+  @Output() stateChange = new EventEmitter<string>(); // variable to keep track of changing modals
+  user: User; // user information
   form: FormGroup;
   constructor(private userService: UserService,
   private router: Router) { }
@@ -47,6 +47,9 @@ export class SignupComponent implements OnInit {
     this.stateChange.emit(state);
   }
 
+  /**
+   * Signs the user up to our website
+   */
   signup(): void {
     /**
      * Get all the user information

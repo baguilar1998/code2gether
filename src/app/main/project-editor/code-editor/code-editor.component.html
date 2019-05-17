@@ -1,10 +1,17 @@
 <div class="container">
+  <!--
+    Holds a button that allows the user
+    to compile the program
+  -->
   <div class="compile-button">
     <button (click)="compileProgram()" id = "runButton">Run</button>
   </div>
+  <!--
+    Holds a text editor where the users can
+    edit their program
+  -->
   <div class="editor">
     <textarea  [(ngModel)]="code" (keyup)="editProgram()" (keydown)="keyBindings($event)" id="inputClass" placeholder="Write code here..."></textarea>
-    <!--<code name="code" ngDeafultControl [innerHTML]="test()" [(ngModel)]="code" id="inputClass" contenteditable="true"></code>-->
   </div>
 </div>
 

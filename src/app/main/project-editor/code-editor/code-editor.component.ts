@@ -12,22 +12,30 @@ import { UserService } from 'src/app/services/User/user.service';
 })
 export class CodeEditorComponent implements OnInit, OnDestroy {
 
-  code: string;
+  code: string; // holds the code that is in the current program
   @Output() codeToCompile = new EventEmitter();
   constructor(private http: HttpClient,
   private programService: ProgramService,
   private projectService: ProjectService,
   private userService: UserService,
   private socket: Socket) {
+    /**
+     * Gets all the available programs that are in the
+     * project
+     */
     this.programService.getPrograms(this.projectService.getCurrentProject()._id)
     .subscribe(
       (data) => {
         console.log('programs were loaded successfully');
+        // Load the list of programs into the programs array
         this.programService.programList = data;
+        // The current code that they can edit will be set to the main program
         this.code = this.programService.programList[0].code;
+        // Notify all users what program a certain user is editing
         this.socket.emit('currentProgram', this.code);
       },
       (err) => {
+        // Case where there was an error in getting the program
         console.log('there was an error in loading the programs');
       }
     );
@@ -47,19 +55,31 @@ export class CodeEditorComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    // Sets the current project to null because the user has left the page
     this.projectService.setCurrentProject(null);
   }
 
+  /**
+   * Emits any changes made to the program and updates it
+   * for all users that are editing the same program in
+   * the project
+   */
   editProgram(): void {
     this.socket.emit('editProgram', this.code);
   }
 
+  /**
+   * Compiles the program
+   */
   compileProgram() {
+    // Set up required information needed to compile a program
     const programInformation = {
       code: this.code,
       language: this.projectService.getCurrentProject().language,
       user: this.userService.getUser().username
     };
+    // Emit that information to the compiler component because
+    // that component should take care of compilation
     this.codeToCompile.emit(programInformation);
   }
 

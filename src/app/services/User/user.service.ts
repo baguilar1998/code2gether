@@ -1,3 +1,8 @@
+/**
+ * A user service that holds any necessary data needed for a user
+ * throughout the entire website as well as any possible backend calls
+ * that is needed for the user
+ */
 import { Injectable } from '@angular/core';
 import { User } from '../../models/User';
 import { Observable } from 'rxjs';
@@ -10,7 +15,7 @@ import { Router } from '../../../../node_modules/@angular/router';
 export class UserService {
 
   private user: User; // holds the user data throughout the entire website
-  private token: string;
+  private token: string; // to auth the user
   private tokenTimer: any;
   private authenticated = false;
   constructor(private http: HttpClient,
@@ -115,6 +120,10 @@ export class UserService {
     localStorage.setItem('date', expirationDate.toISOString());
   }
 
+  /**
+   * Get any auth data that is available whenever
+   * the user refreshes a page
+   */
   private getAuthData() {
     const user = JSON.parse(localStorage.getItem('user'));
     const token = localStorage.getItem('token');

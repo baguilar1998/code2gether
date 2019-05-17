@@ -1,3 +1,6 @@
+/**
+ * Front-end modal for a User
+ */
 export class User {
   _id: string;
   username: string;

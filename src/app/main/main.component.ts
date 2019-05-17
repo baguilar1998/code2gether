@@ -8,8 +8,8 @@ import { UserService } from '../services/User/user.service';
 })
 export class MainComponent implements OnInit {
 
-  projectModal: boolean;
-  joinModal: boolean;
+  projectModal: boolean; // Controls whether or not the create project modal should show
+  joinModal: boolean; // Controls whether or not the join project modal should show
   constructor(private userService: UserService) { }
 
   ngOnInit() {

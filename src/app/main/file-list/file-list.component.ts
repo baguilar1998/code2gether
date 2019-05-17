@@ -11,8 +11,8 @@ import { Socket } from 'ngx-socket-io';
 })
 export class FileListComponent implements OnInit {
 
-  showDeleteModal: boolean;
-  currentIndex: number;
+  showDeleteModal: boolean; // Shows whether or not the delte modal should pop up
+  currentIndex: number; // the indea of the project that the user clicked on
   constructor(private projectService: ProjectService,
   private userService: UserService,
   private router: Router,
@@ -32,7 +32,7 @@ export class FileListComponent implements OnInit {
        this.projectService.projects = data;
     },
     (err) => {
-    })
+    });
   }
 
   /**
