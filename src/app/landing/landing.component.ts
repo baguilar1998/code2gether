@@ -14,6 +14,7 @@ export class LandingComponent implements OnInit {
    }
 
   ngOnInit() {
+    // Removes any projects in the local storage if the user has one
     localStorage.removeItem('currentProject');
   }
 

@@ -12,101 +12,87 @@ export class CompilerComponent implements OnInit {
     private socket: Socket) { }
 
   ngOnInit() {
+    /**
+     * Listens to any emits and it displays the output
+     * of the code to the screen
+     */
     this.socket.on('compiledCode', (output) => {
       console.log('Your output is: ' + output);
+      const compilerEditor = document.getElementById('compiler');
+      compilerEditor.innerHTML += '<span style="color:white; margin-left:10px;">' + output + '</span><br/>';
+    });
+
+    /**
+     * Listens to any emits and displays the user
+     * that decided to compile the code
+     */
+    this.socket.on('compiling', (user) => {
+      const compilerEditor = document.getElementById('compiler');
+      compilerEditor.innerHTML += '<span style="color:white; margin-left:10px;">' + user
+      + '  is compiling current state of code... </span><br/>';
     });
   }
 
+  /**
+   * Sends the current state of the code to the backend to be compiled
+   * and displays the output
+   * @param program the current code that the user is going to compile
+   */
   compile(program): void {
-    const compilerEditor = document.getElementById('compiler');
-    compilerEditor.innerHTML += '<span style="color:white; margin-left:10px;"> Code is compiling... </span><br/>';
+    // Send to all users who is compiling the code
+    this.socket.emit('compiling', program.user);
 
+    /**
+     * Determine which programming langauge to compile
+     * based on the type of language that they used for the
+     * project
+     *
+     * For every code that gets compiled successfully in the backend
+     * (including errors), will be emitted to all users with the
+     * emit()
+     */
     switch (program.language) {
+      // Sends Java code to the Java compiler
       case 'Java':
         this.compilerService.compileJavaCode(program.code).subscribe(
           (compiledCode) => {
-            console.log(compiledCode);
             this.socket.emit('compiledCode', compiledCode.stdout);
-            if (!compiledCode.stdout) {
-              compilerEditor.innerHTML += '<span style="color:red; margin-left:10px;">' + compiledCode.stderr + '</span><br/>';
-            } else {
-              compilerEditor.innerHTML += '<span style="color:white; margin-left:10px;">' + compiledCode.stdout + '</span><br/>';
-            }
-          },
-          (runtimeError) => {
-            console.log(runtimeError);
-            compilerEditor.innerHTML += '<span style="color:red; margin-left:10px;">' + runtimeError.stderr + '</span><br/>';
           }
         );
         break;
 
+        // Sends C++ code the GNU compiler
         case 'C++':
           this.compilerService.compileCPlusPlusCode(program.code).subscribe(
             (compiledCode) => {
-              console.log(compiledCode);
               this.socket.emit('compiledCode', compiledCode.stdout);
-              if (!compiledCode.stdout) {
-                compilerEditor.innerHTML += '<span style="color:red; margin-left:10px;">' + compiledCode.stderr + '</span><br/>';
-              } else {
-                compilerEditor.innerHTML += '<span style="color:white; margin-left:10px;">' + compiledCode.stdout + '</span><br/>';
-              }
-            },
-            (runtimeError) => {
-              console.log(runtimeError);
-              compilerEditor.innerHTML += '<span style="color:red; margin-left:10px;">' + runtimeError.stderr + '</span><br/>';
             }
           );
           break;
+
+        // Sends Python Code to its compiler
         case 'Python':
           this.compilerService.compilePythonCode(program.code).subscribe(
             (compiledCode) => {
-              console.log(compiledCode);
               this.socket.emit('compiledCode', compiledCode.stdout);
-              if (!compiledCode.stdout) {
-                compilerEditor.innerHTML += '<span style="color:red; margin-left:10px;">' + compiledCode.stderr + '</span><br/>';
-              } else {
-                compilerEditor.innerHTML += '<span style="color:white; margin-left:10px;">' + compiledCode.stdout + '</span><br/>';
-              }
-            },
-            (runtimeError) => {
-              console.log(runtimeError);
-              compilerEditor.innerHTML += '<span style="color:red; margin-left:10px;">' + runtimeError.stderr + '</span><br/>';
             }
           );
           break;
 
+        // Send C code to the GNU compiler
         case 'C':
           this.compilerService.compileCCode(program.code).subscribe(
             (compiledCode) => {
-              console.log(compiledCode);
               this.socket.emit('compiledCode', compiledCode.stdout);
-              if (!compiledCode.stdout) {
-                compilerEditor.innerHTML += '<span style="color:red; margin-left:10px;">' + compiledCode.stderr + '</span><br/>';
-              } else {
-                compilerEditor.innerHTML += '<span style="color:white; margin-left:10px;">' + compiledCode.stdout + '</span><br/>';
-              }
-            },
-            (runtimeError) => {
-              console.log(runtimeError);
-              compilerEditor.innerHTML += '<span style="color:red; margin-left:10px;">' + runtimeError.stderr + '</span><br/>';
             }
           );
           break;
 
+        // Send Javascript code to its compiler
         case 'Javascript':
           this.compilerService.compileJavascriptCode(program.code).subscribe(
             (compiledCode) => {
-              console.log(compiledCode);
               this.socket.emit('compiledCode', compiledCode.stdout);
-              if (!compiledCode.stdout) {
-                compilerEditor.innerHTML += '<span style="color:red; margin-left:10px;">' + compiledCode.stderr + '</span><br/>';
-              } else {
-                compilerEditor.innerHTML += '<span style="color:white; margin-left:10px;">' + compiledCode.stdout + '</span><br/>';
-              }
-            },
-            (runtimeError) => {
-              console.log(runtimeError);
-              compilerEditor.innerHTML += '<span style="color:red; margin-left:10px;">' + runtimeError.stderr + '</span><br/>';
             }
           );
           break;

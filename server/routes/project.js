@@ -50,16 +50,20 @@ router.post('/createProject', (req,res,next)=>{
  * Allows other users to join projects
  */
 router.post('/joinProject', (req,res,next)=>{
+  // Gets the invitation code that the user inputted
   const invitationInput = req.body.code;
+  // Find the project that has the invitation code
   Project.findOne({"urlKey": invitationInput}).then(project=>{
+    // If there was no project retrieve, display an error
     if(!project){
       console.log("project was not found");
     } else {
+      // Check to see if the user is trying to join their own project
       const userId = req.body.userId;
-      console.log(project);
       if(project.owner === userId){
         console.log("owner cannot join their own room");
       } else {
+        // Send the project data so the user can join
         res.status(200).send(project);
       }
     }
@@ -72,8 +76,12 @@ router.post('/joinProject', (req,res,next)=>{
  * they become an editor now
  */
 router.post('/pushToProject', (req,res,next)=>{
+  // Get the user data that was sent in
   const user = req.body.user;
+  //Get the projectId that was sent in
   const project = req.body.projectId;
+  //Update the project and add the user to the editors array
+  // because they will be now contributing to the project
   Project.updateOne({'_id':project}, {$push:{editors:user}} , {safe:true, multi:true} )
   .then(project=>{
     res.status(200).send(project);
@@ -89,10 +97,13 @@ router.post('/pushToProject', (req,res,next)=>{
  * is working on
  */
 router.post('/getProjects', (req,res,next)=>{
+  // Get the user id
   const userId = req.body.userId;
   let projects;
+  // Queries all the projects that the user created
   Project.find({"owner":userId}).then(userprojects =>{
     projects = userprojects;
+    // Send all projects to the user
     res.status(200).send(projects);
   });
 });
@@ -109,10 +120,14 @@ router.post('/addProgram', (req,res,next)=>{
     code: req.body.code
   });
 
+  // Add the program data to the database
   newProgram.save().then((results)=>{
+    // Send the program to the user
     console.log('Program added to project');
     res.send(results);
   }).catch((err)=>{
+    // Cataches any errors if something went wrong in adding a program
+    // to the database
     console.log('There has been an error in storing the program');
     console.log(err);
     res.send(err);
@@ -124,8 +139,11 @@ router.post('/addProgram', (req,res,next)=>{
  * database
  */
 router.post('/getPrograms', (req,res,next)=>{
+  // Grab the projectId
   const projectId = req.body.projectId;
   let programList;
+  // Get all programs that contain the projectId
+  // and send them to the user
   Program.find({"projectId": projectId}).then(programs =>{
     programList = programs;
     res.status(200).send(programList);

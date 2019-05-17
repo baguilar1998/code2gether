@@ -19,9 +19,10 @@ app.use((req, res, next) =>{
   next();
 });
 
-//Database setup
-// mongo "mongodb+srv://cluster0-on2wx.mongodb.net/test" --username admin FOR TERMINAL
-//mongodb+srv://admin:qMyzMeqozIf2Db1T@cluster0-on2wx.mongodb.net/test?retryWrites=true
+/**
+ * Connecting our application to the MongoDB database that
+ * was created
+ */
 const uri = 'mongodb+srv://admin:qMyzMeqozIf2Db1T@cluster0-on2wx.mongodb.net/test?retryWrites=true';
 mongoose.connect(uri, { useNewUrlParser:true}).then(()=>{
   console.log('connected to the database');
@@ -34,10 +35,15 @@ mongoose.connect(uri, { useNewUrlParser:true}).then(()=>{
  * Route Imports
  * -----------------------------
  */
+
+// Route that is used to implement any logic for the user
 const userRoute = require('./server/routes/user');
+// Route that is used to implement any logic for compiling code
 const compilerRoute = require('./server/routes/compiler');
+// Route that is used to implement any logic for projects
 const projectRoute = require('./server/routes/project');
 
+// Import the routes so the application can use them
 app.use('/api/user',userRoute);
 app.use('/api/compiler', compilerRoute);
 app.use('/api/project', projectRoute);
@@ -46,34 +52,52 @@ app.use('/api/project', projectRoute);
 /**
  * Socket Set-up
  */
-const program ='';
+
 io.on("connection", (socket)=>{
   console.log("Connection has been established on localhost:4444");
 
+  // Listens to any users that leaves the website
   socket.on("disconnect", ()=>{
     console.log("Connection has been aborted");
   });
 
+  // Listens to any users that joins a project
   socket.on("joinProject", (user)=>{
     console.log(user);
     io.emit("joinProject",user);
   })
 
+
+  // Listens to the current program that the
+  // user is about to edit
   socket.on('currentProgram', (program)=>{
     console.log('Program you are editing: ' + program);
   });
 
+  // Listens to any users that starts making changes
+  // on a program for a project
   socket.on('editProgram', (program)=>{
     console.log("changes have been made");
     io.emit('editProgram',program);
   });
 
+  // Listens to any users that compiles a program
+  socket.on('compiling', (user)=>{
+    console.log(user + " is compiling program");
+    io.emit("compiling", user);
+  });
+
+  // Listens to all code that compiles
   socket.on('compiledCode', (output)=>{
     console.log("Output is: " + output);
     io.emit('compiledCode', output);
   });
 });
 
+/**
+ * Starting another server that is hosted on
+ * localhost:4444 for the sockets to work
+ */
 http.listen(4444, ()=>{
   console.log("Servering on localhost:4444");
 });

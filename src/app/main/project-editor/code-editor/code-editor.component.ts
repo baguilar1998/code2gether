@@ -4,6 +4,7 @@ import { ProgramService } from '../../../services/Program/program.service';
 import { EventEmitter } from '@angular/core';
 import { ProjectService } from '../../../services/Project/project.service';
 import { Socket } from 'ngx-socket-io';
+import { UserService } from 'src/app/services/User/user.service';
 @Component({
   selector: 'app-code-editor',
   templateUrl: './code-editor.component.html',
@@ -16,6 +17,7 @@ export class CodeEditorComponent implements OnInit, OnDestroy {
   constructor(private http: HttpClient,
   private programService: ProgramService,
   private projectService: ProjectService,
+  private userService: UserService,
   private socket: Socket) {
     this.programService.getPrograms(this.projectService.getCurrentProject()._id)
     .subscribe(
@@ -55,7 +57,8 @@ export class CodeEditorComponent implements OnInit, OnDestroy {
   compileProgram() {
     const programInformation = {
       code: this.code,
-      language: this.projectService.getCurrentProject().language
+      language: this.projectService.getCurrentProject().language,
+      user: this.userService.getUser().username
     };
     this.codeToCompile.emit(programInformation);
   }

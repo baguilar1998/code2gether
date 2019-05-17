@@ -1,22 +1,19 @@
+// Package imports
 const express = require('express');
 const router = express.Router();
+// Node package that allows us to compile programs
 const compiler = require('compile-run');
 
-/**
- * SAMPLE RESULTS
- * { stderr: '',
-  stdout: 'Hello World\r\n',
-  exitCode: 0,
-  memoryUsage: 393216,
-  cpuUsage: 47000 }
- */
 
 /**
  * Route to compile python code
  */
 router.post('/python', (req,res,next)=>{
+  // Get the python code
   const sourcecode = req.body.code+ ` `;
+  // Perform the async function to compile python code
   let codeResults = compiler.python.runSource(sourcecode);
+  // When the async task is finish, get the result or catch the error
   codeResults.then(result=>{
     console.log(result);
     res.send(result);
@@ -29,8 +26,11 @@ router.post('/python', (req,res,next)=>{
  * Route to compile c++ code
  */
 router.post('/cplusplus', (req,res,next)=>{
+  // Get the C++ code
   const sourcecode = req.body.code;
+  // Perform the async function to compile C++ code
   let codeResults = compiler.cpp.runSource(sourcecode);
+  // When the async task is finish, get the result or catch the error
   codeResults.then(result=>{
     console.log(result);
     res.send(result);
@@ -43,13 +43,15 @@ router.post('/cplusplus', (req,res,next)=>{
  * Route to compile c code
  */
 router.post('/c', (req,res,next)=>{
+  // Get the C code
   const sourcecode = req.body.code ;
+  // Perform the async function to compile C code
   let codeResults = compiler.cpp.runSource(sourcecode);
+  // When the async task is finish, get the result or catch the error
   codeResults.then(result=>{
-    console.log(result);
     res.send(result);
   }).catch(err=>{
-    console.log(err);
+    res.status(401).send(err);
   });
 });
 
@@ -57,14 +59,15 @@ router.post('/c', (req,res,next)=>{
  * Route to compile java code
  */
 router.post('/java', (req,res,next)=>{
+  // Get the Java code
   const sourcecode = req.body.code ;
+  // Perform the async function to compile Java code
   let codeResults = compiler.java.runSource(sourcecode);
+  // When the async task is finish, get the result or catch the error
   codeResults.then(result=>{
-    // console.log(result);
     res.send(result);
   }).catch(err=>{
     res.status(401).send(err);
-    console.log(err);
   });
 });
 
@@ -73,8 +76,11 @@ router.post('/java', (req,res,next)=>{
  * in node env
  */
 router.post('/javascript', (req,res,next)=>{
-  const sourcecode = req.body.code ;
+  // Get the Javascript code
+  const sourcecode = req.body.code;
+  // Perform the async function to get the javascript code
   let codeResults = compiler.node.runSource(sourcecode);
+  // When the async task is finish, get the result or catch the error
   codeResults.then(result=>{
     console.log(result);
     res.send(result);
