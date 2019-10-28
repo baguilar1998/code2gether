@@ -37,11 +37,11 @@ mongoose.connect(uri, { useNewUrlParser:true}).then(()=>{
  */
 
 // Route that is used to implement any logic for the user
-const userRoute = require('./server/routes/user');
+const userRoute = require('./routes/user');
 // Route that is used to implement any logic for compiling code
-const compilerRoute = require('./server/routes/compiler');
+const compilerRoute = require('./routes/compiler');
 // Route that is used to implement any logic for projects
-const projectRoute = require('./server/routes/project');
+const projectRoute = require('./routes/project');
 
 // Import the routes so the application can use them
 app.use('/api/user',userRoute);

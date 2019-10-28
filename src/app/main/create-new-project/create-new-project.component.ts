@@ -22,7 +22,7 @@ export class CreateNewProjectComponent implements OnInit {
   constructor(private userService: UserService,
   private projectService: ProjectService,
   private programService: ProgramService,
-  private loadingService: LoadingService,
+  public loadingService: LoadingService,
   private router: Router) { }
 
   ngOnInit() {

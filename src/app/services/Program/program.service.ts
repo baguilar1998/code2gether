@@ -68,11 +68,11 @@ export class ProgramService {
           break;
     }
 
-    return this.http.post<any>('//localhost:3000/api/project/addProgram', program);
+    return this.http.post<any>('http://code2getherbackend-env.zmbc6ifmpq.us-east-2.elasticbeanstalk.com/api/project/addProgram', program);
   }
 
   getPrograms(projectId: string): Observable<any> {
     const requiredInformation = { projectId: projectId };
-    return this.http.post<any>('//localhost:3000/api/project/getPrograms', requiredInformation);
+    return this.http.post<any>('http://code2getherbackend-env.zmbc6ifmpq.us-east-2.elasticbeanstalk.com/api/project/getPrograms', requiredInformation);
   }
 }

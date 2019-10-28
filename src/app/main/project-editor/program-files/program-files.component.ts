@@ -9,7 +9,7 @@ import { ProgramService } from '../../../services/Program/program.service';
 })
 export class ProgramFilesComponent implements OnInit {
 
-  constructor(private programService: ProgramService) { }
+  constructor(public programService: ProgramService) { }
 
   ngOnInit() {}
 

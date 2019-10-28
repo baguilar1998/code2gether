@@ -25,23 +25,23 @@ export class ProjectService {
 
    // Backend call for creating a project
    createProject(projectInformation): Observable<any> {
-     return this.http.post<any>('//localhost:3000/api/project/createProject', projectInformation);
+     return this.http.post<any>('http://code2getherbackend-env.zmbc6ifmpq.us-east-2.elasticbeanstalk.com/api/project/createProject', projectInformation);
    }
 
    // Backend call for joining a project
    joinProject(invitationInformation): Observable<any> {
-     return this.http.post<any>('//localhost:3000/api/project/joinProject', invitationInformation);
+     return this.http.post<any>('http://code2getherbackend-env.zmbc6ifmpq.us-east-2.elasticbeanstalk.com/api/project/joinProject', invitationInformation);
    }
 
    // Backend call to push a project
    pushToProject(requiredInformation): Observable<any> {
-     return this.http.post<any>('//localhost:3000/api/project/pushToProject', requiredInformation);
+     return this.http.post<any>('http://code2getherbackend-env.zmbc6ifmpq.us-east-2.elasticbeanstalk.com/api/project/pushToProject', requiredInformation);
    }
 
    // Backend call to get all user projects
    getUserProjects(userId: string) {
      const requiredInformation = {userId: userId};
-     return this.http.post<any>('//localhost:3000/api/project/getProjects', requiredInformation);
+     return this.http.post<any>('http://code2getherbackend-env.zmbc6ifmpq.us-east-2.elasticbeanstalk.com/api/project/getProjects', requiredInformation);
    }
 
    /**

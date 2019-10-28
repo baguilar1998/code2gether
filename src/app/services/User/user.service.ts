@@ -27,7 +27,7 @@ export class UserService {
    * @param userInfo required user information
    */
   signUp(userInfo: User): Observable<any> {
-    return this.http.post<any>('//localhost:3000/api/user/signup', userInfo);
+    return this.http.post<any>('http://code2getherbackend-env.zmbc6ifmpq.us-east-2.elasticbeanstalk.com/api/user/signup', userInfo);
   }
 
   /**
@@ -41,7 +41,7 @@ export class UserService {
       username: user,
       password: pass
     };
-    return this.http.post<any>('//localhost:3000/api/user/login', requiredInformation);
+    return this.http.post<any>('http://code2getherbackend-env.zmbc6ifmpq.us-east-2.elasticbeanstalk.com/api/user/login', requiredInformation);
   }
 
   getUser(): User {

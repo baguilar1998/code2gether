@@ -13,7 +13,7 @@ export class FileListComponent implements OnInit {
 
   showDeleteModal: boolean; // Shows whether or not the delte modal should pop up
   currentIndex: number; // the indea of the project that the user clicked on
-  constructor(private projectService: ProjectService,
+  constructor(public projectService: ProjectService,
   private userService: UserService,
   private router: Router,
   private socket: Socket) {

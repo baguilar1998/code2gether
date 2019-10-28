@@ -9,7 +9,7 @@ import { LoadingService } from '../services/Loading/loading.service';
 export class LandingComponent implements OnInit {
 
   componentState: string; // current state of the landing component
-  constructor(private loadingService: LoadingService) {
+  constructor(public loadingService: LoadingService) {
     this.componentState = 'home';
    }
 
